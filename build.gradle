@@ -7,9 +7,10 @@ plugins {
 }
 
 group 'org.example'
+
 version '1.0-SNAPSHOT'
 
-mainClassName = 'Main'
+mainClassName = 'edu.wpi.cs3733.d20.teamE.Main'
 
 
 repositories {

@@ -1,3 +1,5 @@
+package edu.wpi.cs3733.d20.teamE;
+
 import java.sql.Connection;
 
 public class Main {
