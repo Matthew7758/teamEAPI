@@ -24,6 +24,7 @@ import java.sql.Statement;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+import static java.lang.System.exit;
 import static java.time.LocalTime.parse;
 
 public class OnCallBedController {
@@ -309,14 +310,7 @@ public class OnCallBedController {
 
   // action button to go to home screen
   public void goHome(ActionEvent event) {
-    try {
-      Parent root =
-          FXMLLoader.load(
-              getClass().getResource("/edu/wpi/cs3733/d20/teamE/views/ServiceRequestHome.fxml"));
-      App.getPrimaryStage().getScene().setRoot(root);
-    } catch (IOException ex) {
-      ex.printStackTrace();
-    }
+    exit(6969);
   }
 
   // gets the time start chosen
@@ -484,7 +478,7 @@ public class OnCallBedController {
                           FXMLLoader.load(
                               getClass()
                                   .getResource(
-                                      "/edu/wpi/cs3733/d20/teamE/views/ServiceRequestHome.fxml"));
+                                      "/edu/wpi/cs3733/d20/teamE/views/ReservationCalendar.fxml"));
                       App.getPrimaryStage().getScene().setRoot(root);
                     } catch (IOException ex) {
                       ex.printStackTrace();
