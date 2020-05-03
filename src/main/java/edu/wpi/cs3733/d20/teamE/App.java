@@ -31,7 +31,7 @@ public class App extends Application {
           FXMLLoader.load(
               getClass()
                   .getResource(
-                      "/edu/wpi/cs3733/d20/teamE/views/serviceRequestPages/OnCallBed.fxml"));
+                      "/edu/wpi/cs3733/d20/teamE/views/OnCallBed.fxml"));
       Scene scene = new Scene(root);
       primaryStage.setScene(scene);
       primaryStage.setMaximized(true);

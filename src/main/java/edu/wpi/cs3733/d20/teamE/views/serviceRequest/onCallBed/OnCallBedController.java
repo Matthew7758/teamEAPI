@@ -21,6 +21,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -204,7 +205,7 @@ public class OnCallBedController {
   public void pickDate(ActionEvent event) {
     reEnableBtns();
     datePicker.setDefaultColor(Color.BLUE);
-    /*if (LocalDate.now().isAfter(datePicker.getValue())) {
+    if (LocalDate.now().isAfter(datePicker.getValue())) {
       alert.setContent(
           new Label("You cannot pick a date that has happened!\nPlease pick a different date!"));
       alert.show();
@@ -212,8 +213,7 @@ public class OnCallBedController {
       datePicker.getEditor().clear();
     } else {
       date = datePicker.getValue().toString();
-    }*/
-    date = datePicker.getValue().toString();
+    }
   }
 
   // checks which beds have already been reserved after the user selects a time and date

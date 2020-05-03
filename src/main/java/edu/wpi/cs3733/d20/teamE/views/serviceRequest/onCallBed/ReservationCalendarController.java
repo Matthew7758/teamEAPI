@@ -250,7 +250,7 @@ public class ReservationCalendarController {
           FXMLLoader.load(
               getClass()
                   .getResource(
-                      "/edu/wpi/cs3733/d20/teamE/views/serviceRequestPages/onCallBed.fxml"));
+                      "/edu/wpi/cs3733/d20/teamE/views/onCallBed.fxml"));
       App.getPrimaryStage().getScene().setRoot(root);
     } catch (IOException ex) {
       ex.printStackTrace();
