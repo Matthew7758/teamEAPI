@@ -31,12 +31,12 @@ public class DB {
       // System.out.println("Creating a connection...");
       Connection conn =
           DriverManager.getConnection(
-              "jdbc:derby:Edb;create=false", "admin", "password"); // Open a connection
+              "jdbc:derby:EdbAPI;create=false", "admin", "password"); // Open a connection
       ResultSet resultSet = conn.getMetaData().getCatalogs();
       while (resultSet.next()) {
         String databaseName = resultSet.getString(1);
         // System.out.println(databaseName);
-        if (databaseName.equals("Edb") || databaseName.equals("EDB")) {
+        if (databaseName.equals("EdbAPI") || databaseName.equals("EDBAPI")) {
           return true;
         }
       }
@@ -63,7 +63,7 @@ public class DB {
     try {
       connection =
           DriverManager.getConnection(
-              String.format("jdbc:derby:Edb;create=true;user=%s;password=%s", user, pass));
+              String.format("jdbc:derby:EdbAPI;create=true;user=%s;password=%s", user, pass));
       // Turn on built in users to ensure proper connection.
       turnOnBuiltInUsers(connection, this.username, this.password);
     } catch (SQLException e) {
@@ -206,4 +206,51 @@ public class DB {
     }
     return -1;
   }
+
+  public int updateDB(
+      Connection connection,
+      String table,
+      String uniqueKey,
+      String fieldToBeChanged,
+      String newValue) {
+    try {
+      String primaryKeyType = "";
+      primaryKeyType = "REQUESTID";
+      String query = "";
+
+      if (fieldToBeChanged.toUpperCase().equals("XCOORD")
+          || fieldToBeChanged.toUpperCase().equals("YCOORD")
+          || fieldToBeChanged.toUpperCase().equals("FLOOR")
+          || fieldToBeChanged.toUpperCase().equals("NUMSTAFF")) {
+        query =
+            String.format(
+                "UPDATE %s SET %s = '?' WHERE %s = '?'", table, fieldToBeChanged, primaryKeyType);
+        PreparedStatement ps = connection.prepareStatement(query);
+        ps.setInt(1, Integer.parseInt(newValue));
+        ps.setString(2, uniqueKey);
+        ps.executeUpdate();
+      } else {
+        query =
+            String.format(
+                "UPDATE %s SET %s = ? WHERE %s = ?", table, fieldToBeChanged, primaryKeyType);
+        System.out.println(
+            "Updated "
+                + fieldToBeChanged
+                + " of primary key type "
+                + primaryKeyType
+                + " for node id "
+                + uniqueKey);
+        PreparedStatement ps = connection.prepareStatement(query);
+        ps.setString(1, newValue);
+        ps.setString(2, uniqueKey);
+        ps.executeUpdate();
+      }
+      return 1;
+    } catch (SQLException throwables) {
+      throwables.printStackTrace();
+    }
+    // Update CSV files at the end.
+    return -1;
+  }
+
 }

@@ -24,6 +24,7 @@ repositories {
 dependencies {
     compile 'org.controlsfx:controlsfx:9.0.0'
     compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    implementation 'com.intellij:annotations:+@jar'
     implementation(
             'com.jfoenix:jfoenix:9.0.9',
             // You may comment out the database dependency you do not use
@@ -33,6 +34,9 @@ dependencies {
             'org.slf4j:slf4j-api:1.7.30',
             'org.slf4j:slf4j-simple:1.7.30',
     )
+    implementation ('com.calendarfx:view:11.8.3'){
+        exclude group: 'org.openjfx', module: ''
+    }
 
     testImplementation(
             'org.junit.jupiter:junit-jupiter:5.6.0',
