@@ -46,7 +46,7 @@ public class App extends Application {
       cssPath = list.get(4);
     }
     catch(IndexOutOfBoundsException e) {
-      cssPath="edu/wpi/cs3733/d20/teamE/stylesheets/Light.css";
+      cssPath="edu/wpi/cs3733/d20/teamE/stylesheets/default.css";
     }
     try{
       destNodeID = list.get(5);
