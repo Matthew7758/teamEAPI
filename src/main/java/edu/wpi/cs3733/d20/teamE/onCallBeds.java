@@ -20,9 +20,6 @@ public class onCallBeds {
     args[4]=cssPath;
     args[5]=destNodeID;
     args[6]=originNodeID;
-    for (String x:args) {
-      System.out.println(x);
-    }
     App.launch(App.class,args);
   }
 }

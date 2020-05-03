@@ -11,7 +11,7 @@ public class DB {
     this.password=password;
     try {
       if (checkDBExists()) {
-        System.out.println("Database exists");
+        //System.out.println("Database exists");
         Connection connection = connectDB(this.username, this.password);
         connection.close();
       } else { // Create files
@@ -32,15 +32,15 @@ public class DB {
       Connection conn =
           DriverManager.getConnection(
               "jdbc:derby:EdbAPI;create=false", "admin", "password"); // Open a connection
-      ResultSet resultSet = conn.getMetaData().getCatalogs();
-      while (resultSet.next()) {
-        String databaseName = resultSet.getString(1);
-        // System.out.println(databaseName);
-        if (databaseName.equals("EdbAPI") || databaseName.equals("EDBAPI")) {
-          return true;
-        }
-      }
-      resultSet.close();
+//      ResultSet resultSet = conn.getMetaData().getCatalogs();
+//      while (resultSet.next()) {
+//        String databaseName = resultSet.getString(1);
+//        // System.out.println(databaseName);
+//        if (databaseName.equals("EdbAPI") || databaseName.equals("EDBAPI")) {
+//          return true;
+//        }
+//      }
+//      resultSet.close();
     } catch (Exception e) {
       System.out.println("SQLException caught in checkDBExists()");
       System.out.println("Database does not exist");
@@ -58,7 +58,7 @@ public class DB {
       e.printStackTrace();
       return null;
     }
-    System.out.println("Apache Derby driver registered!");
+    //System.out.println("Apache Derby driver registered!");
     Connection connection = null;
     try {
       connection =
@@ -233,13 +233,13 @@ public class DB {
         query =
             String.format(
                 "UPDATE %s SET %s = ? WHERE %s = ?", table, fieldToBeChanged, primaryKeyType);
-        System.out.println(
-            "Updated "
-                + fieldToBeChanged
-                + " of primary key type "
-                + primaryKeyType
-                + " for node id "
-                + uniqueKey);
+//        System.out.println(
+//            "Updated "
+//                + fieldToBeChanged
+//                + " of primary key type "
+//                + primaryKeyType
+//                + " for node id "
+//                + uniqueKey);
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, newValue);
         ps.setString(2, uniqueKey);

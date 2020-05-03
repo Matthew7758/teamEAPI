@@ -34,10 +34,7 @@ public class App extends Application {
   public void start(Stage primaryStage) {
     Parameters params = getParameters();
     List<String> list = params.getRaw();
-    System.out.println(list.size());
-    for(String each : list){
-      System.out.println(each);
-    }
+
     int xcoord = Integer.parseInt(list.get(0));
     int ycoord = Integer.parseInt(list.get(1));
     int windowWidth = Integer.parseInt(list.get(2));
