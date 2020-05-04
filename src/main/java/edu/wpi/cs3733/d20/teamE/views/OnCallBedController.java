@@ -1,11 +1,12 @@
-package edu.wpi.cs3733.d20.teamE.views.serviceRequest.onCallBed;
+package edu.wpi.cs3733.d20.teamE.views;
 
 import com.jfoenix.controls.*;
-import edu.wpi.cs3733.d20.teamE.App;
 import edu.wpi.cs3733.d20.teamE.DB;
+import edu.wpi.cs3733.d20.teamE.onCallBeds;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -310,7 +311,7 @@ public class OnCallBedController {
 
   // action button to go to home screen
   public void goHome(ActionEvent event) {
-    exit(6969);
+    exit(0);
   }
 
   // gets the time start chosen
@@ -347,13 +348,13 @@ public class OnCallBedController {
       confGridPane.setVisible(true);
     }
   }
-
+  
   public void goToCalendar(ActionEvent event) {
     try {
       Parent root =
           FXMLLoader.load(
-              getClass().getResource("/edu/wpi/cs3733/d20/teamE/views/ReservationCalendar.fxml"));
-      App.getPrimaryStage().getScene().setRoot(root);
+              onCallBeds.class.getResource("views/ReservationCalendar.fxml"));
+      onCallBeds.getApp().getScene().setRoot(root);
     } catch (IOException ex) {
       ex.printStackTrace();
     }
@@ -475,11 +476,8 @@ public class OnCallBedController {
                   close -> {
                     try {
                       Parent root =
-                          FXMLLoader.load(
-                              getClass()
-                                  .getResource(
-                                      "/edu/wpi/cs3733/d20/teamE/views/ReservationCalendar.fxml"));
-                      App.getPrimaryStage().getScene().setRoot(root);
+                          FXMLLoader.load(onCallBeds.class.getResource("views/ReservationCalendar.fxml"));
+                      onCallBeds.getApp().getScene().setRoot(root);
                     } catch (IOException ex) {
                       ex.printStackTrace();
                     }

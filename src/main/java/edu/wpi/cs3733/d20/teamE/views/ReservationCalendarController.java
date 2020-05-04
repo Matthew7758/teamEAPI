@@ -1,4 +1,4 @@
-package edu.wpi.cs3733.d20.teamE.views.serviceRequest.onCallBed;
+package edu.wpi.cs3733.d20.teamE.views;
 
 import com.calendarfx.model.Calendar;
 import com.calendarfx.model.CalendarEvent;
@@ -12,8 +12,8 @@ import com.calendarfx.view.page.DayPage;
 import com.calendarfx.view.popover.EntryHeaderView;
 import com.calendarfx.view.popover.PopOverContentPane;
 import com.jfoenix.controls.JFXButton;
-import edu.wpi.cs3733.d20.teamE.App;
 import edu.wpi.cs3733.d20.teamE.DB;
+import edu.wpi.cs3733.d20.teamE.onCallBeds;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -257,7 +257,7 @@ public class ReservationCalendarController {
               getClass()
                   .getResource(
                       "/edu/wpi/cs3733/d20/teamE/views/onCallBed.fxml"));
-      App.getPrimaryStage().getScene().setRoot(root);
+      onCallBeds.getApp().getScene().setRoot(root);
     } catch (IOException ex) {
       ex.printStackTrace();
     }

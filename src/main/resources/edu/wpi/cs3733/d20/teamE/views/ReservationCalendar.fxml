@@ -2,34 +2,33 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<?import com.calendarfx.view.CalendarView?>
-<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d20.teamE.views.serviceRequest.onCallBed.ReservationCalendarController">
-   <children>
-      <VBox fx:id="vbox" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <HBox fx:id="hbox">
-               <children>
-                  <JFXButton fx:id="backBtn" buttonType="RAISED" onAction="#goBack" ripplerFill="BLACK" text="Back">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </JFXButton>
-                  <Region HBox.hgrow="ALWAYS" />
-                  <Label text="RESERVATION CALENDAR" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Region HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </children>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/11.0.1"
+            fx:controller="edu.wpi.cs3733.d20.teamE.views.ReservationCalendarController">
+    <children>
+        <VBox fx:id="vbox" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox fx:id="hbox">
+                    <children>
+                        <JFXButton fx:id="backBtn" buttonType="RAISED" onAction="#goBack" ripplerFill="BLACK"
+                                   text="Back">
+                            <font>
+                                <Font size="18.0"/>
+                            </font>
+                        </JFXButton>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="RESERVATION CALENDAR" HBox.hgrow="ALWAYS">
+                            <font>
+                                <Font size="24.0"/>
+                            </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

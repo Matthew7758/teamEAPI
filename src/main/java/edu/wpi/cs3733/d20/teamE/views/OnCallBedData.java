@@ -1,4 +1,4 @@
-package edu.wpi.cs3733.d20.teamE.views.serviceRequest.onCallBed;
+package edu.wpi.cs3733.d20.teamE.views;
 
 public class OnCallBedData {
   // class to hold the data from the database
