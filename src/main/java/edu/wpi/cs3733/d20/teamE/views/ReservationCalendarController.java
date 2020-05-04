@@ -421,7 +421,7 @@ public class ReservationCalendarController {
     cal.setTraysAnimated(true);
     cal.getDayPage().setShowDayPageLayoutControls(false);
     cal.setShowPrintButton(false);
-    cal.setShowPageToolBarControls(false);
+    cal.setShowPageToolBarControls(true);
     cal.setLayout(DateControl.Layout.SWIMLANE);
     cal.setEntryEditPolicy(
         e -> {
