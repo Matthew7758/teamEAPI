@@ -37,6 +37,9 @@ dependencies {
     implementation ('com.calendarfx:view:11.8.3'){
         exclude group: 'org.openjfx', module: ''
     }
+    implementation ('com.calendarfx:view:11.8.3'){
+        exclude group: 'org.openjfx', module: ''
+    }
 
     testImplementation(
             'org.junit.jupiter:junit-jupiter:5.6.0',
