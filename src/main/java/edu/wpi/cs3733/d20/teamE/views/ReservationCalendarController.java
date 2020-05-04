@@ -75,9 +75,11 @@ public class ReservationCalendarController {
   String delim = "#";
   DB database = new DB("admin", "password");
   ObservableList<OnCallBedData> reserves = getReserve();
-  @FXML HBox hbox;
+  @FXML
+  HBox hbox;
 
   PopOver p1 = new PopOver();
+
   public void initialize() {
     p1.setTitle("Reservation Info");
     p1.setAutoHide(true);
@@ -85,16 +87,17 @@ public class ReservationCalendarController {
     bedCalendar.getCalendars().addAll(bed1, bed2, bed3, bed4, bed5, bed6, bed7);
     refRoomCalendar.getCalendars().addAll(refRoom1, refRoom2, refRoom3);
     compRoomCalendar
-            .getCalendars()
-            .addAll(compRoom1, compRoom2, compRoom3, compRoom4, compRoom5, compRoom6);
+        .getCalendars()
+        .addAll(compRoom1, compRoom2, compRoom3, compRoom4, compRoom5, compRoom6);
     confRoomsCalendar.getCalendars().addAll(confRoom1, confRoom2, confRoom3, confRoom4);
     cal.getCalendarSources()
-            .setAll(bedCalendar, refRoomCalendar, compRoomCalendar, confRoomsCalendar);
+        .setAll(bedCalendar, refRoomCalendar, compRoomCalendar, confRoomsCalendar);
     setStyles();
     setUpCalendar();
     addReservations();
     vbox.getChildren().add(cal);
   }
+
   // got this code from Matthew to be able to look at the database in this scene
   private OnCallBedData buildReservation(String[] params) {
     String requestID = params[0];
@@ -115,6 +118,7 @@ public class ReservationCalendarController {
         reservedFor,
         isReserved);
   }
+
   // also got this from Matthew to get request database
   public ObservableList<OnCallBedData> getReserve() {
     ObservableList<OnCallBedData> theReqs = FXCollections.observableArrayList();
@@ -304,14 +308,14 @@ public class ReservationCalendarController {
     endDatePicker.disableProperty().bind(entry.getCalendar().readOnlyProperty());
 
     entry
-            .intervalProperty()
-            .addListener(
-                    it -> {
-                      startTimeField.setValue(entry.getStartTime());
-                      endTimeField.setValue(entry.getEndTime());
-                      startDatePicker.setValue(entry.getStartDate());
-                      endDatePicker.setValue(entry.getEndDate());
-                    });
+        .intervalProperty()
+        .addListener(
+            it -> {
+              startTimeField.setValue(entry.getStartTime());
+              endTimeField.setValue(entry.getEndTime());
+              startDatePicker.setValue(entry.getStartDate());
+              endDatePicker.setValue(entry.getEndDate());
+            });
 
     HBox startDateBox = new HBox(10);
     HBox endDateBox = new HBox(10);
@@ -341,18 +345,18 @@ public class ReservationCalendarController {
     ComboBox<ZoneId> zoneBox = new ComboBox<>(zoneIds);
     zoneBox.disableProperty().bind(entry.getCalendar().readOnlyProperty());
     zoneBox.setConverter(
-            new StringConverter<ZoneId>() {
+        new StringConverter<ZoneId>() {
 
-              @Override
-              public String toString(ZoneId object) {
-                return object.getId();
-              }
+          @Override
+          public String toString(ZoneId object) {
+            return object.getId();
+          }
 
-              @Override
-              public ZoneId fromString(String string) {
-                return null;
-              }
-            });
+          @Override
+          public ZoneId fromString(String string) {
+            return null;
+          }
+        });
     zoneBox.setValue(entry.getZoneId());
 
     GridPane box = new GridPane();
@@ -380,19 +384,19 @@ public class ReservationCalendarController {
 
     // start date and time
     startDatePicker
-            .valueProperty()
-            .addListener(evt -> entry.changeStartDate(startDatePicker.getValue(), true));
+        .valueProperty()
+        .addListener(evt -> entry.changeStartDate(startDatePicker.getValue(), true));
     startTimeField
-            .valueProperty()
-            .addListener(evt -> entry.changeStartTime(startTimeField.getValue(), true));
+        .valueProperty()
+        .addListener(evt -> entry.changeStartTime(startTimeField.getValue(), true));
 
     // end date and time
     endDatePicker
-            .valueProperty()
-            .addListener(evt -> entry.changeEndDate(endDatePicker.getValue(), false));
+        .valueProperty()
+        .addListener(evt -> entry.changeEndDate(endDatePicker.getValue(), false));
     endTimeField
-            .valueProperty()
-            .addListener(evt -> entry.changeEndTime(endTimeField.getValue(), false));
+        .valueProperty()
+        .addListener(evt -> entry.changeEndTime(endTimeField.getValue(), false));
 
     // zone Id
     zoneBox.setOnAction(evt -> entry.setZoneId(zoneBox.getValue()));
@@ -406,6 +410,7 @@ public class ReservationCalendarController {
     popOver.setContentNode(popOverContentPane);
     return popOver;
   }
+
   private void setUpCalendar() {
     cal.prefWidthProperty().bind(vbox.widthProperty());
     cal.prefHeightProperty().bind(vbox.heightProperty());
@@ -417,47 +422,47 @@ public class ReservationCalendarController {
     cal.getDayPage().setShowDayPageLayoutControls(false);
     cal.setLayout(DateControl.Layout.SWIMLANE);
     cal.setEntryEditPolicy(
-            e -> {
-              if (e.getEditOperation().equals(DateControl.EditOperation.MOVE)) {
-                return false;
-              }
-              return true;
-            });
+        e -> {
+          if (e.getEditOperation().equals(DateControl.EditOperation.MOVE)) {
+            return false;
+          }
+          return true;
+        });
     // cal.setEntryDetailsPopOverContentCallback(e -> customPopUp(e.getEntry()).getContentNode());
     cal.setEntryDetailsCallback(
-            e -> {
-              return false;
-            });
+        e -> {
+          return false;
+        });
     cal.setEntryContextMenuCallback(
-            e -> {
-              ContextMenu contextMenu = new ContextMenu();
-              MenuItem informationItem =
-                      new MenuItem(Messages.getString("DateControl.MENU_ITEM_INFORMATION")); // $NON-NLS-1$
-              informationItem.setOnAction(
-                      evt -> {
-                        p1.setContentNode(customPopUp(e.getEntry()).getContentNode());
-                        p1.show(
-                                e.getDateControl(),
-                                e.getContextMenuEvent().getSceneX(),
-                                e.getContextMenuEvent().getSceneY());
-                      });
-              contextMenu.getItems().add(informationItem);
-              if (cal.getEntryEditPolicy()
-                      .call(
-                              new DateControl.EntryEditParameter(e.getDateControl(), e.getEntry(), DateControl.EditOperation.DELETE))) {
-                MenuItem delete =
-                        new MenuItem(Messages.getString("DateControl.MENU_ITEM_DELETE")); // $NON-NLS-1$
-                contextMenu.getItems().add(delete);
-                delete.setDisable(e.getCalendar().isReadOnly());
-                delete.setOnAction(
-                        evt -> {
-                          Calendar calendar = e.getEntry().getCalendar();
-                          if (!calendar.isReadOnly()) {
-                            e.getEntry().removeFromCalendar();
-                          }
-                        });
-              }
-              return contextMenu;
-            });
+        e -> {
+          ContextMenu contextMenu = new ContextMenu();
+          MenuItem informationItem =
+              new MenuItem(Messages.getString("DateControl.MENU_ITEM_INFORMATION")); // $NON-NLS-1$
+          informationItem.setOnAction(
+              evt -> {
+                p1.setContentNode(customPopUp(e.getEntry()).getContentNode());
+                p1.show(
+                    e.getDateControl(),
+                    e.getContextMenuEvent().getSceneX(),
+                    e.getContextMenuEvent().getSceneY());
+              });
+          contextMenu.getItems().add(informationItem);
+          if (cal.getEntryEditPolicy()
+              .call(
+                  new DateControl.EntryEditParameter(e.getDateControl(), e.getEntry(), DateControl.EditOperation.DELETE))) {
+            MenuItem delete =
+                new MenuItem(Messages.getString("DateControl.MENU_ITEM_DELETE")); // $NON-NLS-1$
+            contextMenu.getItems().add(delete);
+            delete.setDisable(e.getCalendar().isReadOnly());
+            delete.setOnAction(
+                evt -> {
+                  Calendar calendar = e.getEntry().getCalendar();
+                  if (!calendar.isReadOnly()) {
+                    e.getEntry().removeFromCalendar();
+                  }
+                });
+          }
+          return contextMenu;
+        });
   }
 }

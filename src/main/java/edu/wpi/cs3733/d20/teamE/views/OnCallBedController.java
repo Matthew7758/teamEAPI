@@ -6,7 +6,6 @@ import edu.wpi.cs3733.d20.teamE.onCallBeds;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -141,6 +140,7 @@ public class OnCallBedController {
         reservedFor,
         isReserved);
   }
+
   // also got this from Matthew to get request database
   public ObservableList<OnCallBedData> getReserve() {
     ObservableList<OnCallBedData> theReqs = FXCollections.observableArrayList();
@@ -348,7 +348,7 @@ public class OnCallBedController {
       confGridPane.setVisible(true);
     }
   }
-  
+
   public void goToCalendar(ActionEvent event) {
     try {
       Parent root =
@@ -359,6 +359,7 @@ public class OnCallBedController {
       ex.printStackTrace();
     }
   }
+
   // creates the reservation if everything has been filled int
   public void makeReservationBed(ActionEvent event) {
     if (!isMissingFields()) {

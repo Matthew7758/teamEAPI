@@ -10,6 +10,7 @@ public class Main extends Application {
   public static void main(String[] args) {
     Application.launch();
   }
+
   public void start(Stage primaryStage) throws Exception {
     DB database = new DB("admin", "password");
     Connection conn = database.connectDB("admin", "password");

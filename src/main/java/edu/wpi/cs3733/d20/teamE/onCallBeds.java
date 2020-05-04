@@ -1,13 +1,12 @@
 package edu.wpi.cs3733.d20.teamE;
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.jetbrains.annotations.Nullable;
 import lombok.Getter;
 import lombok.Setter;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 
@@ -60,12 +59,16 @@ public class onCallBeds {
       try {
         if (cssPath != null) {
           s.getStylesheets().add(cssPath);
+        } else {
+          s.getStylesheets().add(String.valueOf(onCallBeds.class.getResource("stylesheets/default.css")));
         }
       } catch (Exception e) {
         System.out.println("Error adding CSS");
         e.printStackTrace();
       }
+
     }
+
     app.setX((double) xcoord);
     app.setY((double) ycoord);
     app.setWidth((double) windowWidth);

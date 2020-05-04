@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="anchorPane" prefHeight="720.0" prefWidth="1280.0"
-            xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="edu.wpi.cs3733.d20.teamE.views.OnCallBedController">
+            xmlns="http://javafx.com/javafx/11.0.1" fx:controller="edu.wpi.cs3733.d20.teamE.views.OnCallBedController">
     <children>
         <SplitPane dividerPositions="0.5" layoutY="39.20000076293945" orientation="VERTICAL" prefHeight="400.0"
                    prefWidth="857.6" style="-fx-background-color: None;" AnchorPane.bottomAnchor="0.0"
@@ -37,7 +36,7 @@
                                 <Region layoutX="83.0" layoutY="10.0" HBox.hgrow="ALWAYS"/>
                                 <JFXButton fx:id="calendarBtn" buttonType="RAISED" maxHeight="-Infinity"
                                            maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                                           onAction="#goToCalendar" prefHeight="39.0" prefWidth="94.0"
+                                           onAction="#goToCalendar" prefHeight="39.0" prefWidth="98.0"
                                            ripplerFill="#2f00ff" text="Calendar">
                                     <font>
                                         <Font size="18.0"/>

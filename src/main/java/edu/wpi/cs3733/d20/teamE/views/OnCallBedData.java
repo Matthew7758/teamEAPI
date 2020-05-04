@@ -10,6 +10,7 @@ public class OnCallBedData {
   String reservationType;
   String reservedFor;
   String isReserved;
+
   // constructor
   public OnCallBedData(
       String requestID,
