@@ -6,9 +6,10 @@ import java.util.UUID;
 public class DB {
   private String password;
   private String username;
+
   public DB(String username, String password) {
-    this.username=username;
-    this.password=password;
+    this.username = username;
+    this.password = password;
     try {
       if (checkDBExists()) {
         //System.out.println("Database exists");
@@ -18,61 +19,10 @@ public class DB {
         System.out.println("Running first time setup");
         runSetup();
       }
-    }
-    catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("Error in DB()");
       e.printStackTrace();
     }
-  }
-
-  private boolean checkDBExists() {
-    try {
-      Class.forName("org.apache.derby.jdbc.EmbeddedDriver"); // Register JDBC Driver
-      // System.out.println("Creating a connection...");
-      Connection conn =
-          DriverManager.getConnection(
-              "jdbc:derby:EdbAPI;create=false", "admin", "password"); // Open a connection
-//      ResultSet resultSet = conn.getMetaData().getCatalogs();
-//      while (resultSet.next()) {
-//        String databaseName = resultSet.getString(1);
-//        // System.out.println(databaseName);
-//        if (databaseName.equals("EdbAPI") || databaseName.equals("EDBAPI")) {
-//          return true;
-//        }
-//      }
-//      resultSet.close();
-    } catch (Exception e) {
-      System.out.println("SQLException caught in checkDBExists()");
-      System.out.println("Database does not exist");
-      return false;
-    }
-    // System.out.println("End of checkDBExists()");
-    return true;
-  }
-
-  public Connection connectDB(String user, String pass) {
-    try {
-      Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-    } catch (ClassNotFoundException e) {
-      System.out.println("Apache Derby Driver not found. Add the classpath to your module.");
-      e.printStackTrace();
-      return null;
-    }
-    //System.out.println("Apache Derby driver registered!");
-    Connection connection = null;
-    try {
-      connection =
-          DriverManager.getConnection(
-              String.format("jdbc:derby:EdbAPI;create=true;user=%s;password=%s", user, pass));
-      // Turn on built in users to ensure proper connection.
-      turnOnBuiltInUsers(connection, this.username, this.password);
-    } catch (SQLException e) {
-      System.out.println("Connection failed. Check output console.");
-      e.printStackTrace();
-      return null;
-    }
-    // System.out.println("Apache Derby connection established!");
-    return connection;
   }
 
   private static void turnOnBuiltInUsers(Connection connection, String username, String pass) {
@@ -127,11 +77,60 @@ public class DB {
           "CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY("
               + "'derby.database.propertiesOnly', 'false')");
       s.close();
-    }
-    catch(SQLException e) {
+    } catch (SQLException e) {
       System.out.println("Error in connectDB");
       e.printStackTrace();
     }
+  }
+
+  private boolean checkDBExists() {
+    try {
+      Class.forName("org.apache.derby.jdbc.EmbeddedDriver"); // Register JDBC Driver
+      // System.out.println("Creating a connection...");
+      Connection conn =
+          DriverManager.getConnection(
+              "jdbc:derby:EdbAPI;create=false", "admin", "password"); // Open a connection
+//      ResultSet resultSet = conn.getMetaData().getCatalogs();
+//      while (resultSet.next()) {
+//        String databaseName = resultSet.getString(1);
+//        // System.out.println(databaseName);
+//        if (databaseName.equals("EdbAPI") || databaseName.equals("EDBAPI")) {
+//          return true;
+//        }
+//      }
+//      resultSet.close();
+    } catch (Exception e) {
+      System.out.println("SQLException caught in checkDBExists()");
+      System.out.println("Database does not exist");
+      return false;
+    }
+    // System.out.println("End of checkDBExists()");
+    return true;
+  }
+
+  public Connection connectDB(String user, String pass) {
+    try {
+      Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+    } catch (ClassNotFoundException e) {
+      System.out.println("Apache Derby Driver not found. Add the classpath to your module.");
+      e.printStackTrace();
+      return null;
+    }
+    //System.out.println("Apache Derby driver registered!");
+    Connection connection = null;
+    try {
+      connection =
+          DriverManager.getConnection(
+              String.format("jdbc:derby:EdbAPI;create=true;user=%s;password=%s", user, pass));
+      // Turn on built in users to ensure proper connection.
+      turnOnBuiltInUsers(connection, this.username, this.password);
+    } catch (SQLException e) {
+      System.out.println("Connection failed. Check output console.");
+      e.printStackTrace();
+      return null;
+    }
+    // System.out.println("Apache Derby connection established!");
+    return connection;
   }
 
   private void runSetup() {

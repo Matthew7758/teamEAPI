@@ -1,4 +1,3 @@
-
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -18,12 +17,12 @@
  * under the License.
  */
 
-.jfx-alert-overlay{
+.jfx-alert-overlay {
     -fx-background-color: #00000011;
     -fx-padding: 0;
 }
 
-.jfx-alert-content-container{
+.jfx-alert-content-container {
     -fx-background-color: WHITE;
 }
 
@@ -48,7 +47,7 @@
 
 .jfx-check-box .box,
 .jfx-check-box:indeterminate .box,
-.jfx-check-box:indeterminate:selected .box{
+.jfx-check-box:indeterminate:selected .box {
     -fx-pref-width: 18;
     -fx-pref-height: 18;
 
@@ -82,7 +81,7 @@
     -fx-border-radius: 2;
 }
 
-.jfx-check-box .indeterminate-mark{
+.jfx-check-box .indeterminate-mark {
     -fx-background-color: -jfx-checked-color;
     -fx-background-radius: 2;
     -fx-border-width: 0;
@@ -106,7 +105,7 @@
     -fx-background-insets: 0px;
 }
 
-.jfx-combo-box{
+.jfx-combo-box {
     -jfx-focus-color: #4059A9;
     -jfx-unfocus-color: #4d4d4d;
     -fx-prompt-text-fill: #4d4d4d;
@@ -115,14 +114,14 @@
 .jfx-combo-box,
 .jfx-combo-box:focused,
 .jfx-combo-box:editable,
-.jfx-combo-box:editable:focused{
+.jfx-combo-box:editable:focused {
     -fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;
     -fx-background-radius: 3px;
     -fx-background-insets: 0px;
 }
 
-.jfx-combo-box .combo-box-button-container{
-    -fx-background-color:TRANSPARENT;
+.jfx-combo-box .combo-box-button-container {
+    -fx-background-color: TRANSPARENT;
 }
 
 .jfx-combo-box:error {
@@ -132,11 +131,11 @@
 
 .jfx-combo-box > .arrow-button,
 .jfx-combo-box:editable > .arrow-button,
-.jfx-combo-box:editable:focused > .arrow-button{
+.jfx-combo-box:editable:focused > .arrow-button {
     -fx-background-color: TRANSPARENT;
 }
 
-.jfx-date-picker{
+.jfx-date-picker {
     -jfx-default-color: #009688;
 }
 
@@ -149,16 +148,16 @@
 .jfx-date-picker > .arrow-button,
 .jfx-date-picker:editable > .arrow-button,
 .jfx-date-picker:focused > .arrow-button,
-.jfx-date-picker:editable:focused > .arrow-button{
+.jfx-date-picker:editable:focused > .arrow-button {
     -fx-background-color: TRANSPARENT;
     -fx-padding: 1 8 1 8;
 }
 
-.jfx-date-picker > .arrow-button > .jfx-svg-glyph{
+.jfx-date-picker > .arrow-button > .jfx-svg-glyph {
     -fx-background-color: -jfx-default-color;
 }
 
-.jfx-dialog-layout{
+.jfx-dialog-layout {
     -fx-text-fill: rgba(0, 0, 0, 0.87);
 }
 
@@ -168,26 +167,26 @@
     -fx-padding: 24 24 20 24;
 }
 
-.jfx-dialog-layout .jfx-layout-actions{
-    -fx-alignment: center-right ;
-    -fx-hgap : 8 ;
+.jfx-dialog-layout .jfx-layout-actions {
+    -fx-alignment: center-right;
+    -fx-hgap: 8;
     -fx-padding: 8 8 8 8;
 }
 
-.jfx-dialog-layout .jfx-layout-actions .jfx-button{
+.jfx-dialog-layout .jfx-layout-actions .jfx-button {
     -fx-pref-height: 36;
     -fx-max-height: 36;
     -fx-min-width: 64;
     -fx-padding: 8;
 }
 
-.jfx-dialog-layout .jfx-layout-body{
+.jfx-dialog-layout .jfx-layout-body {
     -fx-alignment: center-left;
     -fx-padding: 0 24 24 24;
     -fx-pref-width: 400;
 }
 
-.jfx-dialog-layout .jfx-layout-body .label{
+.jfx-dialog-layout .jfx-layout-body .label {
     -fx-text-fill: #757575;
     -fx-font-size: 16.0;
     -fx-wrap-text: true;
@@ -218,18 +217,18 @@
     -fx-fill: #D34336;
 }
 
-.jfx-progress-bar > .track{
+.jfx-progress-bar > .track {
     -fx-background-color: #E0E0E0;
 }
 
 .jfx-progress-bar > .bar,
-.jfx-progress-bar:indeterminate > .bar{
+.jfx-progress-bar:indeterminate > .bar {
     -fx-background-color: #0F9D58;
     -fx-padding: 1.5;
 }
 
 .jfx-progress-bar > .secondary-bar,
-.jfx-progress-bar:indeterminate > .secondary-bar{
+.jfx-progress-bar:indeterminate > .secondary-bar {
     -fx-background-color: #CDE1B7;
 }
 
@@ -305,13 +304,13 @@
 .jfx-text-area,
 .jfx-text-area .scroll-pane,
 .jfx-text-area:focused,
-.jfx-text-area:focused .scroll-pane{
+.jfx-text-area:focused .scroll-pane {
     -fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;
 }
 
 .jfx-text-area .content,
-.jfx-text-area:focused .content{
-    -fx-background-color:TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;
+.jfx-text-area:focused .content {
+    -fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;
     -fx-padding: 0 0 0 0;
 }
 
@@ -364,11 +363,11 @@
 }
 
 .jfx-date-picker > .jfx-text-field,
-.jfx-time-picker > .jfx-text-field{
+.jfx-time-picker > .jfx-text-field {
     -jfx-focus-color: -jfx-default-color;
 }
 
-.jfx-time-picker{
+.jfx-time-picker {
     -jfx-default-color: #009688;
 }
 
@@ -381,12 +380,12 @@
 .jfx-time-picker > .arrow-button,
 .jfx-time-picker:editable > .arrow-button,
 .jfx-time-picker:focused > .arrow-button,
-.jfx-time-picker:editable:focused > .arrow-button{
+.jfx-time-picker:editable:focused > .arrow-button {
     -fx-background-color: TRANSPARENT;
     -fx-padding: 1 8 1 8;
 }
 
-.jfx-time-picker > .arrow-button > .jfx-svg-glyph{
+.jfx-time-picker > .arrow-button > .jfx-svg-glyph {
     -fx-background-color: -jfx-default-color;
 }
 
@@ -395,7 +394,7 @@
 .jfx-toggle-button:hover,
 .jfx-toggle-button:focused,
 .jfx-toggle-button:selected,
-.jfx-toggle-button:focused:selected{
+.jfx-toggle-button:focused:selected {
     -fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;
     -fx-background-radius: 3px;
     -fx-background-insets: 0px;
@@ -406,7 +405,7 @@
 .jfx-toggle-node:hover,
 .jfx-toggle-node:focused,
 .jfx-toggle-node:selected,
-.jfx-toggle-node:focused:selected{
+.jfx-toggle-node:focused:selected {
     -fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;
     -fx-background-radius: 3px;
     -fx-background-insets: 0px;
@@ -416,6 +415,7 @@
     -fx-tree-table-color: rgba(82, 100, 174, 0.4);
     -fx-tree-table-rippler-color: rgba(82, 100, 174, 0.6);
 }
+
 .tree-table-view:focused {
     -fx-background-color: -fx-tree-table-color, -fx-box-border, -fx-control-inner-background;
     -fx-background-insets: -1.4, 0, 1;
@@ -424,7 +424,7 @@
     -fx-padding: 1; /* 0.083333em; */
 }
 
-.tree-table-view:focused .tree-table-row-cell:selected{
+.tree-table-view:focused .tree-table-row-cell:selected {
     -fx-background-color: -fx-tree-table-color;
     -fx-table-cell-border-color: -fx-tree-table-color;
     -fx-text-fill: BLACK;
@@ -517,7 +517,7 @@
 }
 
 .jfx-tree-view-path,
-.jfx-tree-view-path:focused{
+.jfx-tree-view-path:focused {
     -jfx-offset: 10;
     -fx-background-insets: 0;
     -fx-border-width: 0;
@@ -526,11 +526,12 @@
 }
 
 .jfx-tree-view-path > .viewport,
-.jfx-tree-view-path:focused > .viewport{
+.jfx-tree-view-path:focused > .viewport {
     -fx-background-color: -fx-container-color;
     -fx-background-insets: 0;
     -fx-padding: 0;
 }
-.jfx-tree-view-path .buttons-container{
+
+.jfx-tree-view-path .buttons-container {
     -fx-background-color: -fx-container-color;
 }

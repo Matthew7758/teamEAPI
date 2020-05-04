@@ -1,4 +1,4 @@
-package edu.wpi.cs3733.d20.teamE.views.serviceRequest.onCallBed;
+package edu.wpi.cs3733.d20.teamE.views;
 
 import edu.wpi.cs3733.d20.teamE.DB;
 
