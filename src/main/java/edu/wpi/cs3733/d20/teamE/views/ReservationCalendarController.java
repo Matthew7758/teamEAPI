@@ -469,7 +469,9 @@ public class ReservationCalendarController {
                                       e.getDateControl(),
                                       e.getCalendar(),
                                       e.getZonedDateTime()));
-              cM.getItems().remove(3);
+              cM.getItems().remove(0);
+              cM.getItems().remove(1);
+              cM.getItems().remove(1);
               return cM;
             });
   }
