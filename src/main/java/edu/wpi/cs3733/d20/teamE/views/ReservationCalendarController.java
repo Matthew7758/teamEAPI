@@ -4,10 +4,7 @@ import com.calendarfx.model.Calendar;
 import com.calendarfx.model.CalendarEvent;
 import com.calendarfx.model.CalendarSource;
 import com.calendarfx.model.Entry;
-import com.calendarfx.view.CalendarView;
-import com.calendarfx.view.DateControl;
-import com.calendarfx.view.Messages;
-import com.calendarfx.view.TimeField;
+import com.calendarfx.view.*;
 import com.calendarfx.view.page.DayPage;
 import com.calendarfx.view.popover.EntryHeaderView;
 import com.calendarfx.view.popover.PopOverContentPane;
@@ -262,7 +259,7 @@ public class ReservationCalendarController {
           FXMLLoader.load(
               getClass()
                   .getResource(
-                      "/edu/wpi/cs3733/d20/teamE/views/onCallBed.fxml"));
+                      "/edu/wpi/cs3733/d20/teamE/views/OnCallBed.fxml"));
       onCallBeds.getApp().getScene().setRoot(root);
     } catch (IOException ex) {
       ex.printStackTrace();
@@ -460,6 +457,20 @@ public class ReservationCalendarController {
                         });
               }
               return contextMenu;
+            });
+    cal.setContextMenuCallback(
+            e -> {
+              ContextMenu cM;
+              ContextMenuProvider c = new ContextMenuProvider();
+              cM =
+                      c.call(
+                              new DateControl.ContextMenuParameter(
+                                      e.getContextMenuEvent(),
+                                      e.getDateControl(),
+                                      e.getCalendar(),
+                                      e.getZonedDateTime()));
+              cM.getItems().remove(3);
+              return cM;
             });
   }
 }
