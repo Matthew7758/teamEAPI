@@ -3,11 +3,11 @@ package edu.wpi.cs3733.d20.teamE;
 import java.sql.*;
 import java.util.UUID;
 
-public class DB {
+public class DBEAPI {
   private String password;
   private String username;
 
-  public DB(String username, String password) {
+  public DBEAPI(String username, String password) {
     this.username = username;
     this.password = password;
     try {

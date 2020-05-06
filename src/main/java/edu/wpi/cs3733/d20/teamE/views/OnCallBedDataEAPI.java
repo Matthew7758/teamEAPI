@@ -1,6 +1,6 @@
 package edu.wpi.cs3733.d20.teamE.views;
 
-public class OnCallBedData {
+public class OnCallBedDataEAPI {
   // class to hold the data from the database
   String requestID;
   String dateReserved;
@@ -12,7 +12,7 @@ public class OnCallBedData {
   String isReserved;
 
   // constructor
-  public OnCallBedData(
+  public OnCallBedDataEAPI(
       String requestID,
       String dateReserved,
       String timeReservedStart,

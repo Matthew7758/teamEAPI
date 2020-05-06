@@ -1,7 +1,7 @@
 package edu.wpi.cs3733.d20.teamE.views;
 
 import com.jfoenix.controls.*;
-import edu.wpi.cs3733.d20.teamE.DB;
+import edu.wpi.cs3733.d20.teamE.DBEAPI;
 import edu.wpi.cs3733.d20.teamE.onCallBeds;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,6 +15,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -25,10 +26,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-import static java.lang.System.exit;
 import static java.time.LocalTime.parse;
 
-public class OnCallBedController {
+public class OnCallBedControllerEAPI {
   // FXML buttons and fields
   public JFXDatePicker datePicker;
   public JFXComboBox<String> buildingSelect;
@@ -64,10 +64,10 @@ public class OnCallBedController {
   public JFXButton compRoom6;
   public GridPane bedGridPane;
 
-  DB database = new DB("admin", "password");
+  DBEAPI database = new DBEAPI("admin", "password");
   String delim = ",";
   // list to hold reservation data
-  ObservableList<OnCallBedData> reservations = FXCollections.observableArrayList();
+  ObservableList<OnCallBedDataEAPI> reservations = FXCollections.observableArrayList();
 
   // variables to hold data to send request
   String date;
@@ -121,7 +121,7 @@ public class OnCallBedController {
   }
 
   // got this code from Matthew to be able to look at the database in this scene
-  private OnCallBedData buildReservation(String[] params) {
+  private OnCallBedDataEAPI buildReservation(String[] params) {
     String requestID = params[0];
     String dateReserved = params[1];
     String timeReservedStart = params[2];
@@ -130,7 +130,7 @@ public class OnCallBedController {
     String reservationType = params[5];
     String reservedFor = params[6];
     String isReserved = params[7];
-    return new OnCallBedData(
+    return new OnCallBedDataEAPI(
         requestID,
         dateReserved,
         timeReservedStart,
@@ -142,8 +142,8 @@ public class OnCallBedController {
   }
 
   // also got this from Matthew to get request database
-  public ObservableList<OnCallBedData> getReserve() {
-    ObservableList<OnCallBedData> theReqs = FXCollections.observableArrayList();
+  public ObservableList<OnCallBedDataEAPI> getReserve() {
+    ObservableList<OnCallBedDataEAPI> theReqs = FXCollections.observableArrayList();
     // Query database and build line by line
     try {
       Connection connection = database.connectDB("admin", "password");
@@ -177,7 +177,7 @@ public class OnCallBedController {
                 + ","
                 + isReserved;
         String[] lineInfo = finalString.split(delim);
-        OnCallBedData foundReq = buildReservation(lineInfo);
+        OnCallBedDataEAPI foundReq = buildReservation(lineInfo);
         theReqs.add(foundReq);
       }
     } catch (SQLException throwables) {
@@ -311,7 +311,8 @@ public class OnCallBedController {
 
   // action button to go to home screen
   public void goHome(ActionEvent event) {
-    exit(0);
+    Stage stage = (Stage) homeBtn.getScene().getWindow();
+    stage.close();
   }
 
   // gets the time start chosen
@@ -353,8 +354,8 @@ public class OnCallBedController {
     try {
       Parent root =
           FXMLLoader.load(
-              onCallBeds.class.getResource("views/ReservationCalendar.fxml"));
-      onCallBeds.getApp().getScene().setRoot(root);
+              onCallBeds.class.getResource("views/ReservationCalendarEAPI.fxml"));
+      onCallBeds.getAppEAPI().getScene().setRoot(root);
     } catch (IOException ex) {
       ex.printStackTrace();
     }
@@ -461,8 +462,8 @@ public class OnCallBedController {
     makeRes.setOnAction(
         resEvent -> {
           if (!name.getText().isEmpty()) {
-            OnCallBedReserve reserve =
-                new OnCallBedReserve(
+            OnCallBedReserveEAPI reserve =
+                new OnCallBedReserveEAPI(
                     date, building, resNum, timeStart, timeEnd, name.getText(), "Y");
             int verify = reserve.sendReservation();
             // confirm that the reservation is valid
@@ -477,8 +478,8 @@ public class OnCallBedController {
                   close -> {
                     try {
                       Parent root =
-                          FXMLLoader.load(onCallBeds.class.getResource("views/ReservationCalendar.fxml"));
-                      onCallBeds.getApp().getScene().setRoot(root);
+                          FXMLLoader.load(onCallBeds.class.getResource("views/ReservationCalendarEAPI.fxml"));
+                      onCallBeds.getAppEAPI().getScene().setRoot(root);
                     } catch (IOException ex) {
                       ex.printStackTrace();
                     }

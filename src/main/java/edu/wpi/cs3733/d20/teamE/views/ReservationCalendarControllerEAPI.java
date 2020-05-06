@@ -11,7 +11,7 @@ import com.calendarfx.view.popover.PopOverContentPane;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTimePicker;
-import edu.wpi.cs3733.d20.teamE.DB;
+import edu.wpi.cs3733.d20.teamE.DBEAPI;
 import edu.wpi.cs3733.d20.teamE.onCallBeds;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
@@ -20,7 +20,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -39,7 +38,7 @@ import java.time.ZoneId;
 import java.util.Comparator;
 import java.util.Set;
 
-public class ReservationCalendarController {
+public class ReservationCalendarControllerEAPI {
   public AnchorPane anchorPane;
   public JFXButton backBtn;
   public VBox vbox;
@@ -72,8 +71,8 @@ public class ReservationCalendarController {
   Entry<String> reservation;
   // DeveloperConsole console = new DeveloperConsole();
   String delim = "#";
-  DB database = new DB("admin", "password");
-  ObservableList<OnCallBedData> reserves = getReserve();
+  DBEAPI database = new DBEAPI("admin", "password");
+  ObservableList<OnCallBedDataEAPI> reserves = getReserve();
   @FXML
   HBox hbox;
 
@@ -98,7 +97,7 @@ public class ReservationCalendarController {
   }
 
   // got this code from Matthew to be able to look at the database in this scene
-  private OnCallBedData buildReservation(String[] params) {
+  private OnCallBedDataEAPI buildReservation(String[] params) {
     String requestID = params[0];
     String dateReserved = params[1];
     String timeReservedStart = params[2];
@@ -107,7 +106,7 @@ public class ReservationCalendarController {
     String reservationType = params[5];
     String reservedFor = params[6];
     String isReserved = params[7];
-    return new OnCallBedData(
+    return new OnCallBedDataEAPI(
         requestID,
         dateReserved,
         timeReservedStart,
@@ -119,8 +118,8 @@ public class ReservationCalendarController {
   }
 
   // also got this from Matthew to get request database
-  public ObservableList<OnCallBedData> getReserve() {
-    ObservableList<OnCallBedData> theReqs = FXCollections.observableArrayList();
+  public ObservableList<OnCallBedDataEAPI> getReserve() {
+    ObservableList<OnCallBedDataEAPI> theReqs = FXCollections.observableArrayList();
     // Query database and build line by line
     try {
       Connection connection = database.connectDB("admin", "password");
@@ -154,7 +153,7 @@ public class ReservationCalendarController {
                 + delim
                 + isReserved;
         String[] lineInfo = finalString.split(delim);
-        OnCallBedData foundReq = buildReservation(lineInfo);
+        OnCallBedDataEAPI foundReq = buildReservation(lineInfo);
         theReqs.add(foundReq);
       }
     } catch (SQLException throwables) {
@@ -165,7 +164,7 @@ public class ReservationCalendarController {
 
   private void addReservations() {
     Connection connection = database.connectDB("admin", "password");
-    for (OnCallBedData b : reserves) {
+    for (OnCallBedDataEAPI b : reserves) {
       if (b.reservedFor.contains(":")) {
         reservation = new Entry<>(b.reservedFor);
       } else {
@@ -259,8 +258,8 @@ public class ReservationCalendarController {
           FXMLLoader.load(
               getClass()
                   .getResource(
-                      "/edu/wpi/cs3733/d20/teamE/views/OnCallBed.fxml"));
-      onCallBeds.getApp().getScene().setRoot(root);
+                      "/edu/wpi/cs3733/d20/teamE/views/OnCallBedEAPI.fxml"));
+      onCallBeds.getAppEAPI().getScene().setRoot(root);
     } catch (IOException ex) {
       ex.printStackTrace();
     }

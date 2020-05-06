@@ -1,11 +1,11 @@
 package edu.wpi.cs3733.d20.teamE.views;
 
-import edu.wpi.cs3733.d20.teamE.DB;
+import edu.wpi.cs3733.d20.teamE.DBEAPI;
 
 import java.sql.Connection;
 
 // class to submit the request
-public class OnCallBedReserve {
+public class OnCallBedReserveEAPI {
   String dateReserved;
   String timeReservedStart;
   String timeReservedEnd;
@@ -13,11 +13,11 @@ public class OnCallBedReserve {
   String reservationType;
   String reservedFor;
   String isReserved;
-  DB db = new DB("admin", "password");
-  Connection conn = db.connectDB("admin", "password");
+  DBEAPI DBEAPI = new DBEAPI("admin", "password");
+  Connection conn = DBEAPI.connectDB("admin", "password");
 
   // constructor
-  public OnCallBedReserve(
+  public OnCallBedReserveEAPI(
       String dateReserved,
       String building,
       String reservationType,
@@ -38,7 +38,7 @@ public class OnCallBedReserve {
   // has return value to be able to verify the request sent
   public int sendReservation() {
     int verify =
-        db.addReservation(
+        DBEAPI.addReservation(
             conn,
             null,
             dateReserved,

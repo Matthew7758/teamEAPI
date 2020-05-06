@@ -6,7 +6,7 @@ plugins {
     id "io.freefair.lombok" version "5.0.0-rc6"
 }
 
-mainClassName = 'edu.wpi.cs3733.d20.teamE.Main'
+mainClassName = 'edu.wpi.cs3733.d20.teamE.MainEAPI'
 
 
 repositories {
@@ -53,9 +53,6 @@ test {
 jar {
     manifest {
         attributes 'Main-Class': mainClassName
-    }
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 

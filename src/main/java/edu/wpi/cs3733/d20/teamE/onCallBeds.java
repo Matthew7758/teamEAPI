@@ -13,44 +13,44 @@ import java.io.IOException;
 public class onCallBeds {
   @Getter
   @Setter
-  private static Scene scene;
+  private static Scene sceneEAPI;
   @Getter
   @Setter
-  private static Scene calendarScene;
+  private static Scene calendarSceneEAPI;
   @Getter
   @Setter
-  private static Parent onCall;
+  private static Parent onCallEAPI;
   @Getter
   @Setter
-  private static Parent calendar;
+  private static Parent calendarEAPI;
   @Getter
   @Setter
-  private static Stage app;
+  private static Stage appEAPI;
 
   public static void run(int xcoord, int ycoord, int windowWidth, int windowLength, @Nullable String cssPath, @Nullable String destNodeID, @Nullable String originNodeID) {
-    app = new Stage();
+    appEAPI = new Stage();
     //loadPartial
     try {
-      onCall = FXMLLoader.load(onCallBeds.class.getResource("views/OnCallBed.fxml"));
-      calendar = FXMLLoader.load(onCallBeds.class.getResource("views/ReservationCalendar.fxml"));
+      onCallEAPI = FXMLLoader.load(onCallBeds.class.getResource("views/OnCallBedEAPI.fxml"));
+      calendarEAPI = FXMLLoader.load(onCallBeds.class.getResource("views/ReservationCalendarEAPI.fxml"));
     } catch (NullPointerException | IOException e) {
       System.out.println("Error in loadPartial()");
       e.printStackTrace();
     }
     //loadScenes
     try {
-      scene = new Scene(FXMLLoader.load(onCallBeds.class.getResource("/edu/wpi/cs3733/d20/teamE/views/OnCallBed.fxml")));
-      calendarScene = new Scene(FXMLLoader.load(onCallBeds.class.getResource("/edu/wpi/cs3733/d20/teamE/views/ReservationCalendar.fxml")));
+      sceneEAPI = new Scene(FXMLLoader.load(onCallBeds.class.getResource("/edu/wpi/cs3733/d20/teamE/views/OnCallBedEAPI.fxml")));
+      calendarSceneEAPI = new Scene(FXMLLoader.load(onCallBeds.class.getResource("/edu/wpi/cs3733/d20/teamE/views/ReservationCalendarEAPI.fxml")));
     } catch (NullPointerException | IOException e) {
       System.out.println("Error in loadScenes()");
       e.printStackTrace();
     }
 
-    app.setTitle("On Call Beds API");
+    appEAPI.setTitle("On Call Beds API");
 
-    app.setScene(scene);
-    scene.setRoot(onCall);
-    Scene[] sceneList = new Scene[]{scene, calendarScene};
+    appEAPI.setScene(sceneEAPI);
+    sceneEAPI.setRoot(onCallEAPI);
+    Scene[] sceneList = new Scene[]{sceneEAPI, calendarSceneEAPI};
     Scene[] sceneListCopy = sceneList;
     int sceneListLength = sceneList.length;
     //Add stylesheet
@@ -60,7 +60,7 @@ public class onCallBeds {
         if (cssPath != null) {
           s.getStylesheets().add(cssPath);
         } else {
-          s.getStylesheets().add(String.valueOf(onCallBeds.class.getResource("stylesheets/default.css")));
+          s.getStylesheets().add("/edu/wpi/cs3733/d20/teamE/stylesheetsEAPI/defaultEAPI.css");
         }
       } catch (Exception e) {
         System.out.println("Error adding CSS");
@@ -69,11 +69,11 @@ public class onCallBeds {
 
     }
 
-    app.setX((double) xcoord);
-    app.setY((double) ycoord);
-    app.setWidth((double) windowWidth);
-    app.setHeight((double) windowLength);
-    app.setMaximized(true);
-    app.show();
+    appEAPI.setX((double) xcoord);
+    appEAPI.setY((double) ycoord);
+    appEAPI.setWidth((double) windowWidth);
+    appEAPI.setHeight((double) windowLength);
+    appEAPI.setMaximized(true);
+    appEAPI.show();
   }
 }
