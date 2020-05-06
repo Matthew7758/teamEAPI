@@ -456,6 +456,8 @@ public class ReservationCalendarController {
                           }
                         });
               }
+              contextMenu.getItems().get(0).setStyle("-fx-text-fill: black");
+              contextMenu.getItems().get(1).setStyle("-fx-text-fill: black");
               return contextMenu;
             });
     cal.setContextMenuCallback(
@@ -469,9 +471,25 @@ public class ReservationCalendarController {
                                       e.getDateControl(),
                                       e.getCalendar(),
                                       e.getZonedDateTime()));
-              cM.getItems().remove(0);
               cM.getItems().remove(1);
               cM.getItems().remove(1);
+              cM.getItems().remove(1);
+              cM.getItems().get(0).setStyle("-fx-text-fill: black");
+              cM.getItems()
+                      .get(0)
+                      .setOnAction(
+                              evt -> {
+                                if (e.getDateControl().getLayout().equals(DateControl.Layout.SWIMLANE)) {
+                                  Calendar calendar =
+                                          e.getDateControl()
+                                                  .getCalendarAt(
+                                                          e.getContextMenuEvent().getX(), e.getContextMenuEvent().getY())
+                                                  .orElse(null);
+                                  e.getDateControl().createEntryAt(e.getZonedDateTime(), calendar);
+                                } else {
+                                  e.getDateControl().createEntryAt(e.getZonedDateTime());
+                                }
+                              });
               return cM;
             });
   }
