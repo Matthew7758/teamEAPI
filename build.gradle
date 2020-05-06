@@ -6,10 +6,6 @@ plugins {
     id "io.freefair.lombok" version "5.0.0-rc6"
 }
 
-group 'org.example'
-
-version '1.0-SNAPSHOT'
-
 mainClassName = 'edu.wpi.cs3733.d20.teamE.Main'
 
 
@@ -22,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.controlsfx:controlsfx:9.0.0'
+    //compile 'org.controlsfx:controlsfx:9.0.0'
     compile group: 'commons-io', name: 'commons-io', version: '2.6'
     implementation 'com.intellij:annotations:+@jar'
     implementation(
@@ -46,7 +42,7 @@ dependencies {
 
 javafx {
     version = "11.0.1"
-    modules = ['javafx.controls', 'javafx.fxml', 'javafx.web']
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.base']
 }
 
 
@@ -57,6 +53,9 @@ test {
 jar {
     manifest {
         attributes 'Main-Class': mainClassName
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 
