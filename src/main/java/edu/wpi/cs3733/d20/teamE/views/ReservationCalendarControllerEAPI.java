@@ -1,9 +1,7 @@
 package edu.wpi.cs3733.d20.teamE.views;
 
+import com.calendarfx.model.*;
 import com.calendarfx.model.Calendar;
-import com.calendarfx.model.CalendarEvent;
-import com.calendarfx.model.CalendarSource;
-import com.calendarfx.model.Entry;
 import com.calendarfx.view.*;
 import com.calendarfx.view.page.DayPage;
 import com.calendarfx.view.popover.EntryHeaderView;
@@ -22,21 +20,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.util.Callback;
 import javafx.util.StringConverter;
+import net.fortuna.ical4j.transform.rfc5545.CreatedPropertyRule;
 import org.controlsfx.control.PopOver;
 
+import java.awt.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.util.Comparator;
-import java.util.Set;
+import java.text.MessageFormat;
+import java.time.*;
+import java.util.*;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
+
+import static java.time.LocalTime.parse;
 
 public class ReservationCalendarControllerEAPI {
   public AnchorPane anchorPane;
@@ -77,7 +82,6 @@ public class ReservationCalendarControllerEAPI {
   HBox hbox;
 
   PopOver p1 = new PopOver();
-
   public void initialize() {
     p1.setTitle("Reservation Info");
     p1.setAutoHide(true);
@@ -198,7 +202,7 @@ public class ReservationCalendarControllerEAPI {
               Calendar cal = event.getCalendar();
               Entry entry = event.getEntry();
               entry.setMinimumDuration(Duration.ofMinutes(30));
-              System.out.println(entry.getDuration());
+              //System.out.println(entry.getDuration());
               if (cal.getName().contains("Bed")) {
                 entry.setLocation("Faulkner");
               } else {
@@ -208,6 +212,14 @@ public class ReservationCalendarControllerEAPI {
                 entry.setLocation(entry.getLocation() + " Flexible Workshop");
               }
               entry.setTitle(cal.getName() + ": " + entry.getTitle());
+              reserves.add(new OnCallBedDataEAPI(entry.getId(),
+                      entry.getStartDate().toString(),
+                      entry.getStartTime().toString(),
+                      entry.getEndTime().toString(),
+                      entry.getLocation(),
+                      cal.getName(),
+                      entry.getTitle(),
+                      "Y"));
               database.addReservation(
                   connection,
                   entry.getId(),
@@ -420,6 +432,9 @@ public class ReservationCalendarControllerEAPI {
               if (e.getEditOperation().equals(DateControl.EditOperation.MOVE)) {
                 return false;
               }
+              if(e.getEditOperation().equals(DateControl.EditOperation.CHANGE_START)||e.getEditOperation().equals(DateControl.EditOperation.CHANGE_END)){
+                return false;
+              }
               return true;
             });
     cal.setEntryDetailsCallback(
@@ -481,9 +496,7 @@ public class ReservationCalendarControllerEAPI {
                                 if (e.getDateControl().getLayout().equals(DateControl.Layout.SWIMLANE)) {
                                   Calendar calendar =
                                           e.getDateControl()
-                                                  .getCalendarAt(
-                                                          e.getContextMenuEvent().getX(), e.getContextMenuEvent().getY())
-                                                  .orElse(null);
+                                                  .getCalendarAt(e.getContextMenuEvent().getX(), e.getContextMenuEvent().getY()).orElse(null);
                                   e.getDateControl().createEntryAt(e.getZonedDateTime(), calendar);
                                 } else {
                                   e.getDateControl().createEntryAt(e.getZonedDateTime());
@@ -491,5 +504,49 @@ public class ReservationCalendarControllerEAPI {
                               });
               return cM;
             });
+    cal.setEntryFactory(e->{
+      int entryCounter=1;
+      DateControl control = e.getDateControl();
+
+      VirtualGrid grid = control.getVirtualGrid();
+      ZonedDateTime time = e.getZonedDateTime();
+      DayOfWeek firstDayOfWeek = control.getFirstDayOfWeek();
+      ZonedDateTime lowerTime = grid.adjustTime(time, false, firstDayOfWeek);
+      ZonedDateTime upperTime = grid.adjustTime(time, true, firstDayOfWeek);
+
+      if (Duration.between(time, lowerTime).abs().minus(Duration.between(time, upperTime).abs()).isNegative()) {
+        time = lowerTime;
+      } else {
+        time = upperTime;
+      }
+
+      Entry<Object> entry=null;
+        for(Calendar c:e.getDateControl().getCalendars()) {
+          List list = c.findEntries(e.getDefaultCalendar().getName());
+          Iterator i = list.iterator();
+          while (i.hasNext()){
+            Entry ent= (Entry) i.next();
+            LocalTime start = ent.getStartTime();
+            LocalTime end = ent.getEndTime();
+            LocalTime compareStart = time.toLocalTime();
+            LocalTime compareEnd = time.toLocalTime().plusHours(1);
+            if (ent.getCalendar().getName().equals(e.getDefaultCalendar().getName())) {
+              if (ent.getStartDate().equals(time.toLocalDate())) {
+                if (start.equals(compareStart)
+                        || compareStart.isAfter(start) && compareStart.isBefore(end)
+                        || compareEnd.isAfter(start) && compareEnd.isBefore(end)) {
+                  return null;
+                }
+              }
+            }
+          }
+        }
+        entry = new Entry<>(MessageFormat.format(Messages.getString("DateControl.DEFAULT_ENTRY_TITLE"), entryCounter++)); //$NON-NLS-1$
+        entry.setCalendar(e.getDefaultCalendar());
+        Interval interval = new Interval(time.toLocalDateTime(), time.toLocalDateTime().plusHours(1));
+        entry.setInterval(interval);
+
+      return entry;
+    });
   }
 }
