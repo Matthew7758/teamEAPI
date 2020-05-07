@@ -19,6 +19,6 @@ public class OnCallBedsFX extends Application {
         throwables.printStackTrace();
       }
     }));
-    onCallBeds.run(0, 0, 1280, 720, "edu/wpi/cs3733/d20/teamE/stylesheets/defaultEAPI.css", null, null);
+    onCallBeds.run(0, 0, 1280, 720, "edu/wpi/cs3733/d20/teamE/stylesheetsEAPI/defaultEAPI.css", null, null);
   }
 }
