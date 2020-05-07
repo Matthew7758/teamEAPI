@@ -122,7 +122,7 @@
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/confRoom.png"/>
+                                                <Image url="@../images/confRoomEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -138,7 +138,7 @@
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/confRoom.png"/>
+                                                <Image url="@../images/confRoomEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -155,7 +155,7 @@
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/confRoom.png"/>
+                                                <Image url="@../images/confRoomEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -171,7 +171,7 @@
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/confRoom.png"/>
+                                                <Image url="@../images/confRoomEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -203,7 +203,7 @@
                                         <ImageView fitHeight="150.0" fitWidth="250.0" pickOnBounds="true"
                                                    preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/compRoom.png"/>
+                                                <Image url="@../images/compRoomEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -221,7 +221,7 @@
                                         <ImageView fitHeight="150.0" fitWidth="250.0" pickOnBounds="true"
                                                    preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/compRoom.png"/>
+                                                <Image url="@../images/compRoomEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -239,7 +239,7 @@
                                         <ImageView fitHeight="150.0" fitWidth="250.0" pickOnBounds="true"
                                                    preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/compRoom.png"/>
+                                                <Image url="@../images/compRoomEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -257,7 +257,7 @@
                                         <ImageView fitHeight="150.0" fitWidth="250.0" pickOnBounds="true"
                                                    preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/compRoom.png"/>
+                                                <Image url="@../images/compRoomEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -275,7 +275,7 @@
                                         <ImageView fitHeight="150.0" fitWidth="250.0" pickOnBounds="true"
                                                    preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/compRoom.png"/>
+                                                <Image url="@../images/compRoomEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -293,7 +293,7 @@
                                         <ImageView fitHeight="150.0" fitWidth="250.0" pickOnBounds="true"
                                                    preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/compRoom.png"/>
+                                                <Image url="@../images/compRoomEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -323,7 +323,7 @@
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/reflRoom.png"/>
+                                                <Image url="@../images/reflRoomEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -339,7 +339,7 @@
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/reflRoom.png"/>
+                                                <Image url="@../images/reflRoomEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -355,7 +355,7 @@
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/reflRoom.png"/>
+                                                <Image url="@../images/reflRoomEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -387,7 +387,7 @@
                                     <graphic>
                                         <ImageView fitWidth="256.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/bed.png"/>
+                                                <Image url="@../images/bedEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -404,7 +404,7 @@
                                     <graphic>
                                         <ImageView fitWidth="256.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/bed.png"/>
+                                                <Image url="@../images/bedEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -421,7 +421,7 @@
                                     <graphic>
                                         <ImageView fitWidth="256.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/bed.png"/>
+                                                <Image url="@../images/bedEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -439,7 +439,7 @@
                                     <graphic>
                                         <ImageView fitWidth="256.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/bed.png"/>
+                                                <Image url="@../images/bedEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -456,7 +456,7 @@
                                     <graphic>
                                         <ImageView fitWidth="256.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/bed.png"/>
+                                                <Image url="@../images/bedEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -474,7 +474,7 @@
                                     <graphic>
                                         <ImageView fitWidth="256.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/bed.png"/>
+                                                <Image url="@../images/bedEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -492,7 +492,7 @@
                                     <graphic>
                                         <ImageView fitWidth="256.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../images/bed.png"/>
+                                                <Image url="@../images/bedEAPI.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
