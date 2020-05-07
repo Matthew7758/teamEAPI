@@ -7,9 +7,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class OnCallBedsFX extends Application {
- /* public static void main(String[] args) {
-    Application.launch();
-  }*/
 
   public void start(Stage primaryStage) throws Exception {
     DBEAPI database = new DBEAPI("admin", "password");
@@ -22,6 +19,6 @@ public class OnCallBedsFX extends Application {
         throwables.printStackTrace();
       }
     }));
-    onCallBeds.run(0, 0, 1280, 720, "edu/wpi/cs3733/d20/teamE/stylesheets/default.css", null, null);
+    onCallBeds.run(0, 0, 1280, 720, "edu/wpi/cs3733/d20/teamE/stylesheets/defaultEAPI.css", null, null);
   }
 }
