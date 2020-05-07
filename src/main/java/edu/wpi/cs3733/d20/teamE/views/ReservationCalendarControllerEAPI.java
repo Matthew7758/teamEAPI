@@ -22,14 +22,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.util.Callback;
 import javafx.util.StringConverter;
-import net.fortuna.ical4j.transform.rfc5545.CreatedPropertyRule;
 import org.controlsfx.control.PopOver;
 
-import java.awt.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -39,9 +35,6 @@ import java.text.MessageFormat;
 import java.time.*;
 import java.util.*;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
-
-import static java.time.LocalTime.parse;
 
 public class ReservationCalendarControllerEAPI {
   public AnchorPane anchorPane;
