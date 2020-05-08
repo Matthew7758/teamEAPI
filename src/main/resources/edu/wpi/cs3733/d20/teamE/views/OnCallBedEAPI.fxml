@@ -22,7 +22,7 @@
                                            contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
                                            minHeight="-Infinity" minWidth="-Infinity" onAction="#goHome"
                                            prefHeight="39.0" prefWidth="73.0" ripplerFill="#4000ff" styleClass=".button"
-                                           text="Home" HBox.hgrow="ALWAYS">
+                                           text="Exit" HBox.hgrow="ALWAYS">
                                     <font>
                                         <Font size="18.0"/>
                                     </font>
