@@ -2,32 +2,42 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="edu.wpi.cs3733.d20.teamE.views.ReservationCalendarControllerEAPI">
+
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733.d20.teamE.views.ReservationCalendarControllerEAPI">
     <children>
-        <VBox fx:id="vbox" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0"
-              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox fx:id="vbox" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <HBox fx:id="hbox">
                     <children>
-                        <JFXButton fx:id="backBtn" buttonType="RAISED" onAction="#goBack" ripplerFill="BLACK"
-                                   text="Back">
+                        <JFXButton fx:id="backBtn" buttonType="RAISED" onAction="#goBack" ripplerFill="BLACK" text="Back">
                             <font>
-                                <Font size="18.0"/>
+                                <Font size="18.0" />
                             </font>
                         </JFXButton>
-                        <Region HBox.hgrow="ALWAYS"/>
+                        <Region HBox.hgrow="ALWAYS" />
                         <Label text="RESERVATION CALENDAR" HBox.hgrow="ALWAYS">
                             <font>
-                                <Font size="24.0"/>
+                                <Font size="24.0" />
                             </font>
                         </Label>
-                        <Region HBox.hgrow="ALWAYS"/>
+                        <Region HBox.hgrow="ALWAYS" />
                     </children>
                 </HBox>
+                <TabPane fx:id="calendarTabs" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                    <Tab fx:id="allCallTab" closable="false" onSelectionChanged="#tabHandler" text="All Rooms" />
+                    <Tab fx:id="bedTab" closable="false" onSelectionChanged="#tabHandler" text="On Call Beds" />
+                    <Tab fx:id="refTab" closable="false" onSelectionChanged="#tabHandler" text="Reflection Rooms" />
+                    <Tab fx:id="compTab" closable="false" onSelectionChanged="#tabHandler" text="Computer Rooms" />
+                    <Tab fx:id="confTab" closable="false" onSelectionChanged="#tabHandler" text="Conference Rooms" />
+
+                </TabPane>
             </children>
         </VBox>
     </children>

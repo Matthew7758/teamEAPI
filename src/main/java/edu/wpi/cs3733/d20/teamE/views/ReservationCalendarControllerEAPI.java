@@ -9,19 +9,23 @@ import com.calendarfx.view.popover.PopOverContentPane;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTimePicker;
+import com.sun.javafx.scene.control.behavior.TabPaneBehavior;
 import edu.wpi.cs3733.d20.teamE.DBEAPI;
 import edu.wpi.cs3733.d20.teamE.onCallBeds;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.util.StringConverter;
 import org.controlsfx.control.PopOver;
@@ -73,6 +77,18 @@ public class ReservationCalendarControllerEAPI {
   ObservableList<OnCallBedDataEAPI> reserves = getReserve();
   @FXML
   HBox hbox;
+  @FXML
+  TabPane calendarTabs=new TabPane();
+  @FXML
+  Tab bedTab=new Tab("On Call Beds");
+  @FXML
+  Tab refTab=new Tab("Reflection Rooms");
+  @FXML
+  Tab compTab=new Tab("Computer Rooms");
+  @FXML
+  Tab confTab=new Tab("Conference Rooms");
+  @FXML
+  public Tab allCallTab;
 
   PopOver p1 = new PopOver();
   public void initialize() {
@@ -85,12 +101,10 @@ public class ReservationCalendarControllerEAPI {
         .getCalendars()
         .addAll(compRoom1, compRoom2, compRoom3, compRoom4, compRoom5, compRoom6);
     confRoomsCalendar.getCalendars().addAll(confRoom1, confRoom2, confRoom3, confRoom4);
-    cal.getCalendarSources()
-        .setAll(bedCalendar, refRoomCalendar, compRoomCalendar, confRoomsCalendar);
+    cal.getCalendarSources().setAll(bedCalendar,refRoomCalendar,compRoomCalendar,confRoomsCalendar);
     setStyles();
     setUpCalendar();
     addReservations();
-    vbox.getChildren().add(cal);
   }
 
   // got this code from Matthew to be able to look at the database in this scene
@@ -195,7 +209,6 @@ public class ReservationCalendarControllerEAPI {
               Calendar cal = event.getCalendar();
               Entry entry = event.getEntry();
               entry.setMinimumDuration(Duration.ofMinutes(30));
-              //System.out.println(entry.getDuration());
               if (cal.getName().contains("Bed")) {
                 entry.setLocation("Faulkner");
               } else {
@@ -205,6 +218,7 @@ public class ReservationCalendarControllerEAPI {
                 entry.setLocation(entry.getLocation() + " Flexible Workshop");
               }
               entry.setTitle(cal.getName() + ": " + entry.getTitle());
+              entry.setCalendar(cal);
               reserves.add(new OnCallBedDataEAPI(entry.getId(),
                       entry.getStartDate().toString(),
                       entry.getStartTime().toString(),
@@ -273,16 +287,24 @@ public class ReservationCalendarControllerEAPI {
   private void setStyles() {
     for (int i = 0; i < bedCalendar.getCalendars().size(); i++) {
       bedCalendar.getCalendars().get(i).setStyle(Calendar.Style.values()[i]);
+      bedCalendar.getCalendars().get(i).setShortName("Bed "+(i+1));
     }
     for (int i = 0; i < refRoomCalendar.getCalendars().size(); i++) {
       refRoomCalendar.getCalendars().get(i).setStyle(Calendar.Style.values()[i]);
+      refRoomCalendar.getCalendars().get(i).setShortName("Room "+(i+1));
+
     }
     for (int i = 0; i < compRoomCalendar.getCalendars().size(); i++) {
       compRoomCalendar.getCalendars().get(i).setStyle(Calendar.Style.values()[i]);
+      compRoomCalendar.getCalendars().get(i).setShortName("Room "+(i+1));
     }
     for (int i = 0; i < confRoomsCalendar.getCalendars().size(); i++) {
       confRoomsCalendar.getCalendars().get(i).setStyle(Calendar.Style.values()[i]);
     }
+    confRoom1.setShortName("Abrams");
+    confRoom2.setShortName("Anesthesia");
+    confRoom3.setShortName("Duncan Reid");
+    confRoom4.setShortName("Medical Records");
   }
 
   private PopOver customPopUp(Entry entry) {
@@ -307,9 +329,7 @@ public class ReservationCalendarControllerEAPI {
     startDatePicker.setValue(entry.getStartDate());
     startDatePicker.disableProperty().bind(entry.getCalendar().readOnlyProperty());
 
-    entry
-            .intervalProperty()
-            .addListener(
+    entry.intervalProperty().addListener(
                     it -> {
                       startTimeField.setValue(entry.getStartTime());
                       endTimeField.setValue(entry.getEndTime());
@@ -378,14 +398,37 @@ public class ReservationCalendarControllerEAPI {
     startDatePicker
             .valueProperty()
             .addListener(evt -> entry.changeStartDate(startDatePicker.getValue(), true));
-    startTimeField
-            .valueProperty()
-            .addListener(evt -> entry.changeStartTime(startTimeField.getValue(), false));
+    startTimeField.valueProperty().addListener(evt -> {
+      List list=entry.getCalendar().findEntries(entry.getCalendar().getName());
+      list.remove(entry);
+      Iterator i=list.iterator();
+      while (i.hasNext()){
+        Entry ent=(Entry) i.next();
+        LocalTime start = ent.getStartTime();
+        LocalTime end = ent.getEndTime();
+        LocalTime compareStart = startTimeField.getValue();
+        if(!(start.equals(compareStart)
+                || compareStart.isAfter(start) && compareStart.isBefore(end)||start.isAfter(compareStart))){
+          entry.changeStartTime(startTimeField.getValue(), false);
+        }
+      }
+    });
 
     // end time
-    endTimeField
-            .valueProperty()
-            .addListener(evt -> entry.changeEndTime(endTimeField.getValue(), false));
+    endTimeField.valueProperty().addListener(evt -> {
+      List list=entry.getCalendar().findEntries(entry.getCalendar().getName());
+      list.remove(entry);
+      Iterator i=list.iterator();
+      while (i.hasNext()){
+        Entry ent=(Entry) i.next();
+        LocalTime start = ent.getStartTime();
+        LocalTime end = ent.getEndTime();
+        LocalTime compareEnd = endTimeField.getValue();
+        if(!(compareEnd.isBefore(entry.getStartTime())||compareEnd.isAfter(start)&&compareEnd.isBefore(end)||end.equals(compareEnd)||end.isBefore(compareEnd))){
+          entry.changeEndTime(endTimeField.getValue(), false);
+        }
+      }
+    });
 
     // zone Id
     zoneBox.setOnAction(evt -> entry.setZoneId(zoneBox.getValue()));
@@ -401,8 +444,8 @@ public class ReservationCalendarControllerEAPI {
   }
 
   private void setUpCalendar() {
-    cal.prefWidthProperty().bind(vbox.widthProperty());
-    cal.prefHeightProperty().bind(vbox.heightProperty());
+    cal.prefWidthProperty().bind(calendarTabs.widthProperty());
+    cal.prefHeightProperty().bind(calendarTabs.heightProperty());
     cal.setShowAddCalendarButton(false);
     cal.getDayPage().setDayPageLayout(DayPage.DayPageLayout.DAY_ONLY);
     cal.setTransitionsEnabled(true);
@@ -534,6 +577,9 @@ public class ReservationCalendarControllerEAPI {
             }
           }
         }
+        if(time.toLocalTime().isBefore(LocalTime.now())){
+          return null;
+        }
         entry = new Entry<>(MessageFormat.format(Messages.getString("DateControl.DEFAULT_ENTRY_TITLE"), entryCounter++)); //$NON-NLS-1$
         entry.setCalendar(e.getDefaultCalendar());
         Interval interval = new Interval(time.toLocalDateTime(), time.toLocalDateTime().plusHours(1));
@@ -541,5 +587,33 @@ public class ReservationCalendarControllerEAPI {
 
       return entry;
     });
+  }
+
+  public void tabHandler(Event event) {
+    bedTab.setContent(null);
+    refTab.setContent(null);
+    compTab.setContent(null);
+    confTab.setContent(null);
+    allCallTab.setContent(null);
+    if(event.getSource().equals(allCallTab)){
+      cal.getCalendarSources().setAll(bedCalendar,refRoomCalendar,compRoomCalendar,confRoomsCalendar);
+      allCallTab.setContent(cal);
+    }
+    if(event.getSource().equals(bedTab)) {
+      cal.getCalendarSources().setAll(bedCalendar);
+      bedTab.setContent(cal);
+    }
+    if(event.getSource().equals(refTab)){
+      cal.getCalendarSources().setAll(refRoomCalendar);
+      refTab.setContent(cal);
+    }
+    if(event.getSource().equals(compTab)) {
+      cal.getCalendarSources().setAll(compRoomCalendar);
+      compTab.setContent(cal);
+    }
+    if(event.getSource().equals(confTab)){
+      cal.getCalendarSources().setAll(confRoomsCalendar);
+      confTab.setContent(cal);
+    }
   }
 }
