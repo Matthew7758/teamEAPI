@@ -194,10 +194,10 @@ public class OnCallBedControllerEAPI {
     resetBtns();
     building = buildingSelect.getSelectionModel().getSelectedItem();
     if (building.equals("Faulkner")) {
-      //resSelect.setDisable(false);
+      resSelect.setDisable(false);
       resSelect.setItems(FXCollections.observableArrayList("On Call Beds"));
     } else {
-      //resSelect.setDisable(false);
+      resSelect.setDisable(false);
       resSelect.setItems(
           FXCollections.observableArrayList(
               "Reflection Rooms", "Computer Rooms", "Conference Rooms"));

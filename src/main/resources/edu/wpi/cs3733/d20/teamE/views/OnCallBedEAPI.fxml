@@ -54,7 +54,7 @@
                                         <Insets top="10.0" />
                                     </HBox.margin>
                                 </JFXComboBox>
-                                <JFXComboBox fx:id="resSelect" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#resSelection" prefHeight="25.0" prefWidth="130.0" promptText="Select Reservation">
+                                <JFXComboBox fx:id="resSelect" disable="true" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#resSelection" prefHeight="25.0" prefWidth="130.0" promptText="Select Reservation">
                                     <HBox.margin>
                                         <Insets top="10.0" />
                                     </HBox.margin>
