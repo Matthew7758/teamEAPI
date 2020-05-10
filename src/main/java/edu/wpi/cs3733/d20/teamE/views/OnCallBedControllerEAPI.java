@@ -31,8 +31,8 @@ import static java.time.LocalTime.parse;
 public class OnCallBedControllerEAPI {
   // FXML buttons and fields
   public JFXDatePicker datePicker;
-  public JFXComboBox<String> buildingSelect;
-  public JFXComboBox<String> resSelect;
+  public JFXComboBox<String> buildingSelect=new JFXComboBox<>();
+  public JFXComboBox<String> resSelect=new JFXComboBox<>();
   public JFXTimePicker timePickerStart;
   public JFXTimePicker timePickerEnd;
   public JFXButton checkBtn;
@@ -96,14 +96,13 @@ public class OnCallBedControllerEAPI {
   JFXTextField name = new JFXTextField();
   JFXDialogLayout enterName = new JFXDialogLayout();
   JFXButton makeRes = new JFXButton("Confirm");
-
+  // populates the buildings drop down
+  ObservableList<String> buildings = FXCollections.observableArrayList("Faulkner", "Main Campus");
+  ObservableList<String> resTypes =
+          FXCollections.observableArrayList(
+                  "On Call Beds", "Reflection Rooms", "Computer Rooms", "Conference Rooms");
   // Sets all of the initial values of the screen
   public void initialize() {
-    // populates the buildings drop down
-    ObservableList<String> buildings = FXCollections.observableArrayList("Faulkner", "Main Campus");
-    ObservableList<String> resTypes =
-        FXCollections.observableArrayList(
-            "On Call Beds", "Reflection Rooms", "Computer Rooms", "Conference Rooms");
     buildingSelect.setItems(buildings);
     resSelect.setItems(resTypes);
     // gets the existing reservations from database
@@ -331,11 +330,12 @@ public class OnCallBedControllerEAPI {
 
   public void resSelection(ActionEvent event) {
     reEnableBtns();
-    bedGridPane.setVisible(false);
-    roomGridPane.setVisible(false);
-    compGridPane.setVisible(false);
-    confGridPane.setVisible(false);
-    if (resSelect.getSelectionModel().getSelectedItem().equals("Reflection Rooms")) {
+    if(resSelect.getSelectionModel().isEmpty()){
+      bedGridPane.setVisible(false);
+      roomGridPane.setVisible(false);
+      compGridPane.setVisible(false);
+      confGridPane.setVisible(false);
+    } else if (resSelect.getSelectionModel().getSelectedItem().equals("Reflection Rooms")) {
       roomGridPane.toFront();
       roomGridPane.setVisible(true);
     } else if (resSelect.getSelectionModel().getSelectedItem().equals("On Call Beds")) {
