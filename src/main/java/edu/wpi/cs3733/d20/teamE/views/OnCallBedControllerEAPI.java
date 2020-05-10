@@ -3,6 +3,8 @@ package edu.wpi.cs3733.d20.teamE.views;
 import com.jfoenix.controls.*;
 import edu.wpi.cs3733.d20.teamE.DBEAPI;
 import edu.wpi.cs3733.d20.teamE.onCallBeds;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -101,8 +103,10 @@ public class OnCallBedControllerEAPI {
   ObservableList<String> resTypes =
           FXCollections.observableArrayList(
                   "On Call Beds", "Reflection Rooms", "Computer Rooms", "Conference Rooms");
+  int getLastClicked;
   // Sets all of the initial values of the screen
   public void initialize() {
+    getLastClicked=0;
     buildingSelect.setItems(buildings);
     resSelect.setItems(resTypes);
     // gets the existing reservations from database
@@ -187,13 +191,13 @@ public class OnCallBedControllerEAPI {
 
   // gets building selection
   public void selBuilding(ActionEvent event) {
-    reEnableBtns();
+    resetBtns();
     building = buildingSelect.getSelectionModel().getSelectedItem();
     if (building.equals("Faulkner")) {
-      resSelect.setDisable(false);
+      //resSelect.setDisable(false);
       resSelect.setItems(FXCollections.observableArrayList("On Call Beds"));
     } else {
-      resSelect.setDisable(false);
+      //resSelect.setDisable(false);
       resSelect.setItems(
           FXCollections.observableArrayList(
               "Reflection Rooms", "Computer Rooms", "Conference Rooms"));
@@ -203,7 +207,7 @@ public class OnCallBedControllerEAPI {
 
   // gets date
   public void pickDate(ActionEvent event) {
-    reEnableBtns();
+    resetBtns();
     datePicker.setDefaultColor(Color.BLUE);
     if (LocalDate.now().isAfter(datePicker.getValue())) {
       alert.setContent(
@@ -231,25 +235,54 @@ public class OnCallBedControllerEAPI {
             if (reservations.get(r).reservationType.equalsIgnoreCase(bed.getText())) {
               bed.setDisable(true);
               bed.setText("RESERVED!");
+            }else if(!bed.getText().equals("RESERVED!")){
+              bed.setDisable(false);
             }
           }
           for (JFXButton refRoom : refRooms) {
             if (reservations.get(r).reservationType.equalsIgnoreCase(refRoom.getText())) {
               refRoom.setDisable(true);
               refRoom.setText("RESERVED!");
+            }else if(!refRoom.getText().equals("RESERVED!")){
+              refRoom.setDisable(false);
             }
           }
           for (JFXButton compRoom : compRooms) {
             if (reservations.get(r).reservationType.equalsIgnoreCase(compRoom.getText())) {
               compRoom.setDisable(true);
               compRoom.setText("RESERVED!");
+            }else if(!compRoom.getText().equals("RESERVED!")){
+              compRoom.setDisable(false);
             }
           }
           for (JFXButton confRoom : confRooms) {
             if (reservations.get(r).reservationType.equalsIgnoreCase(confRoom.getText())) {
               confRoom.setDisable(true);
               confRoom.setText("RESERVED!");
+            } else if(!confRoom.getText().equals("RESERVED!")){
+              confRoom.setDisable(false);
             }
+          }
+        }
+      }else{
+        for (JFXButton bed : beds) {
+          if(!bed.getText().equals("RESERVED!")) {
+            bed.setDisable(false);
+          }
+        }
+        for (JFXButton refRoom : refRooms) {
+          if(!refRoom.getText().equals("RESERVED!")) {
+            refRoom.setDisable(false);
+          }
+        }
+        for (JFXButton comp : compRooms) {
+          if(!comp.getText().equals("RESERVED!")) {
+            comp.setDisable(false);
+          }
+        }
+        for (JFXButton conf : confRooms) {
+          if(!conf.getText().equals("RESERVED!")) {
+            conf.setDisable(false);
           }
         }
       }
@@ -265,8 +298,8 @@ public class OnCallBedControllerEAPI {
         && timeEnd != null) {
       LocalTime start = parse(timeStart);
       LocalTime end = parse(timeEnd);
-      if (end.isBefore(start)) {
-        alert.setContent(new Label("End time cannot be before the start!"));
+      if (end.isBefore(start)||end.equals(start)) {
+        alert.setContent(new Label("End time cannot be before\nor the same as start!"));
         alert.show();
         timePickerEnd.setDefaultColor(Color.RED);
         timePickerEnd.getEditor().clear();
@@ -316,20 +349,24 @@ public class OnCallBedControllerEAPI {
 
   // gets the time start chosen
   public void pickTimeStart(ActionEvent event) {
-    reEnableBtns();
+    resetBtns();
     timeStart = timePickerStart.getValue().toString();
     timePickerStart.setDefaultColor(Color.BLUE);
   }
 
   // gets the time end chosen
   public void pickTimeEnd(ActionEvent event) {
-    reEnableBtns();
+    resetBtns();
     timeEnd = timePickerEnd.getValue().toString();
     timePickerEnd.setDefaultColor(Color.BLUE);
   }
 
   public void resSelection(ActionEvent event) {
-    reEnableBtns();
+    resetBtns();
+    bedGridPane.setVisible(false);
+    roomGridPane.setVisible(false);
+    compGridPane.setVisible(false);
+    confGridPane.setVisible(false);
     if(resSelect.getSelectionModel().isEmpty()){
       bedGridPane.setVisible(false);
       roomGridPane.setVisible(false);
@@ -469,11 +506,6 @@ public class OnCallBedControllerEAPI {
             // confirm that the reservation is valid
             if (verify == 1) {
               alert.setContent(new Label("Your reservation has been made\nThank you!"));
-              // clear all of the fields
-              buildingSelect.getSelectionModel().clearSelection();
-              datePicker.getEditor().clear();
-              timePickerStart.getEditor().clear();
-              timePickerEnd.getEditor().clear();
               alert.setOnCloseRequest(
                   close -> {
                     try {
@@ -495,18 +527,24 @@ public class OnCallBedControllerEAPI {
     alert.setContent(layout);
   }
 
-  private void reEnableBtns() {
-    for (JFXButton b : refRooms) {
-      b.setDisable(false);
+  private void resetBtns() {
+    for(int i=0;i<refRooms.size();i++){
+      refRooms.get(i).setDisable(true);
+      refRooms.get(i).setText("Reflection Room "+(i+1));
     }
-    for (JFXButton b : beds) {
-      b.setDisable(false);
+    for(int i=0;i<beds.size();i++){
+      beds.get(i).setDisable(true);
+      beds.get(i).setText("Bed "+(i+1));
+    }for(int i=0;i<compRooms.size();i++){
+      compRooms.get(i).setDisable(true);
+      compRooms.get(i).setText("Computer Room "+(i+1));
+    }for(int i=0;i<confRooms.size();i++){
+      confRooms.get(i).setDisable(true);
     }
-    for (JFXButton b : compRooms) {
-      b.setDisable(false);
-    }
-    for (JFXButton b : confRooms) {
-      b.setDisable(false);
-    }
+    confRoom1.setText("Abrams Conference Room");
+    confRoom2.setText("Anesthesia Conference Room");
+    confRoom3.setText("Duncan Reid Conference Room");
+    confRoom4.setText("Medical Records Conference Room");
   }
+
 }

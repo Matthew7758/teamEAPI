@@ -54,7 +54,7 @@
                                         <Insets top="10.0" />
                                     </HBox.margin>
                                 </JFXComboBox>
-                                <JFXComboBox fx:id="resSelect" disable="true" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#resSelection" prefHeight="25.0" prefWidth="130.0" promptText="Select Reservation">
+                                <JFXComboBox fx:id="resSelect" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#resSelection" prefHeight="25.0" prefWidth="130.0" promptText="Select Reservation">
                                     <HBox.margin>
                                         <Insets top="10.0" />
                                     </HBox.margin>
@@ -96,7 +96,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <JFXButton fx:id="confRoom1" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#makeReservationConf" prefHeight="323.0" prefWidth="639.0" ripplerFill="BLACK" text="Abrams Conference Room" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="confRoom1" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" onAction="#makeReservationConf" prefHeight="323.0" prefWidth="639.0" ripplerFill="BLACK" text="Abrams Conference Room" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -108,7 +108,7 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="confRoom2" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" onAction="#makeReservationConf" prefHeight="323.0" prefWidth="639.0" ripplerFill="BLACK" text="Anesthesia Conference Room" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="confRoom2" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="10.0" onAction="#makeReservationConf" prefHeight="323.0" prefWidth="639.0" ripplerFill="BLACK" text="Anesthesia Conference Room" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -120,7 +120,7 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="confRoom3" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" onAction="#makeReservationConf" prefHeight="323.0" prefWidth="639.0" ripplerFill="BLACK" text="Duncan Reid Conference Room" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="confRoom3" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="10.0" onAction="#makeReservationConf" prefHeight="323.0" prefWidth="639.0" ripplerFill="BLACK" text="Duncan Reid Conference Room" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -132,7 +132,7 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="confRoom4" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" onAction="#makeReservationConf" prefHeight="323.0" prefWidth="639.0" ripplerFill="BLACK" text="Medical Records Conference Room" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="confRoom4" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="10.0" onAction="#makeReservationConf" prefHeight="323.0" prefWidth="639.0" ripplerFill="BLACK" text="Medical Records Conference Room" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -157,7 +157,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <JFXButton fx:id="compRoom1" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationComp" prefHeight="306.0" prefWidth="426.0" ripplerFill="BLACK" text="Computer Room 1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="compRoom1" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationComp" prefHeight="306.0" prefWidth="426.0" ripplerFill="BLACK" text="Computer Room 1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -169,7 +169,7 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="compRoom4" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationComp" prefHeight="306.0" prefWidth="426.0" ripplerFill="BLACK" text="Computer Room 4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="compRoom4" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationComp" prefHeight="306.0" prefWidth="426.0" ripplerFill="BLACK" text="Computer Room 4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -181,7 +181,7 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="compRoom2" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationComp" prefHeight="306.0" prefWidth="426.0" ripplerFill="BLACK" text="Computer Room 2" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="compRoom2" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationComp" prefHeight="306.0" prefWidth="426.0" ripplerFill="BLACK" text="Computer Room 2" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -193,7 +193,7 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="compRoom5" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="316.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationComp" prefHeight="306.0" prefWidth="426.0" ripplerFill="BLACK" text="Computer Room 5" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="compRoom5" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="316.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationComp" prefHeight="306.0" prefWidth="426.0" ripplerFill="BLACK" text="Computer Room 5" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -205,7 +205,7 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="compRoom3" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="436.0" layoutY="316.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationComp" prefHeight="306.0" prefWidth="426.0" ripplerFill="BLACK" text="Computer Room 3" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="compRoom3" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" layoutX="436.0" layoutY="316.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationComp" prefHeight="306.0" prefWidth="426.0" ripplerFill="BLACK" text="Computer Room 3" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -217,7 +217,7 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="compRoom6" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="862.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationComp" prefHeight="306.0" prefWidth="426.0" ripplerFill="BLACK" text="Computer Room 6" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="compRoom6" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" layoutX="862.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationComp" prefHeight="306.0" prefWidth="426.0" ripplerFill="BLACK" text="Computer Room 6" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -243,7 +243,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <JFXButton fx:id="refRoom1" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#makeReservationReflRoom" ripplerFill="BLACK" text="Reflection Room 1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="refRoom1" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" onAction="#makeReservationReflRoom" ripplerFill="BLACK" text="Reflection Room 1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -255,7 +255,7 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="reflRoom2" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#makeReservationReflRoom" ripplerFill="BLACK" text="Reflection Room 2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="reflRoom2" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" onAction="#makeReservationReflRoom" ripplerFill="BLACK" text="Reflection Room 2" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -267,7 +267,7 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="reflRoom3" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" onAction="#makeReservationReflRoom" ripplerFill="BLACK" text="Reflection Room 3" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="reflRoom3" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" onAction="#makeReservationReflRoom" ripplerFill="BLACK" text="Reflection Room 3" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -293,7 +293,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="ALWAYS" />
                             </rowConstraints>
                             <children>
-                                <JFXButton fx:id="bed1" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationBed" prefWidth="426.0" ripplerFill="BLACK" text="Bed 1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="bed1" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationBed" prefWidth="426.0" ripplerFill="BLACK" text="Bed 1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
                                             <image>
@@ -305,7 +305,7 @@
                                         <Font name="System Bold" size="28.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="bed2" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationBed" prefWidth="426.0" ripplerFill="BLACK" text="Bed 2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="bed2" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationBed" prefWidth="426.0" ripplerFill="BLACK" text="Bed 2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
                                             <image>
@@ -317,7 +317,7 @@
                                         <Font name="System Bold" size="28.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="bed3" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationBed" prefWidth="426.0" ripplerFill="BLACK" text="Bed 3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="bed3" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationBed" prefWidth="426.0" ripplerFill="BLACK" text="Bed 3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
                                             <image>
@@ -329,7 +329,7 @@
                                         <Font name="System Bold" size="28.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="bed4" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationBed" prefWidth="426.0" ripplerFill="BLACK" text="Bed 4" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="bed4" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationBed" prefWidth="426.0" ripplerFill="BLACK" text="Bed 4" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
                                             <image>
@@ -341,7 +341,7 @@
                                         <Font name="System Bold" size="28.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="bed5" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationBed" prefWidth="426.0" ripplerFill="BLACK" text="Bed 5" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="bed5" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationBed" prefWidth="426.0" ripplerFill="BLACK" text="Bed 5" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
                                             <image>
@@ -353,7 +353,7 @@
                                         <Font name="System Bold" size="28.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="bed6" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationBed" prefWidth="426.0" ripplerFill="BLACK" text="Bed 6" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="bed6" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationBed" prefWidth="426.0" ripplerFill="BLACK" text="Bed 6" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
                                             <image>
@@ -365,7 +365,7 @@
                                         <Font name="System Bold" size="28.0" />
                                     </font>
                                 </JFXButton>
-                                <JFXButton fx:id="bed7" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationBed" prefWidth="426.0" ripplerFill="BLACK" text="Bed 7" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                <JFXButton fx:id="bed7" alignment="CENTER" buttonType="RAISED" contentDisplay="TOP" disable="true" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#makeReservationBed" prefWidth="426.0" ripplerFill="BLACK" text="Bed 7" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                     <graphic>
                                         <ImageView pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
                                             <image>
