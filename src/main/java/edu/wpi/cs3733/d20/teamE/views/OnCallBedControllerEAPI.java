@@ -103,10 +103,8 @@ public class OnCallBedControllerEAPI {
   ObservableList<String> resTypes =
           FXCollections.observableArrayList(
                   "On Call Beds", "Reflection Rooms", "Computer Rooms", "Conference Rooms");
-  int getLastClicked;
   // Sets all of the initial values of the screen
   public void initialize() {
-    getLastClicked=0;
     buildingSelect.setItems(buildings);
     resSelect.setItems(resTypes);
     // gets the existing reservations from database
@@ -222,67 +220,82 @@ public class OnCallBedControllerEAPI {
 
   // checks which beds have already been reserved after the user selects a time and date
   private void checkIsReserved() {
-    for (int r = 0; r < reservations.size(); r++) {
-      LocalTime start = parse(reservations.get(r).timeReservedStart);
-      LocalTime end = parse(reservations.get(r).timeReservedEnd);
-      LocalTime compareStart = parse(timeStart);
-      LocalTime compareEnd = parse(timeEnd);
-      if (reservations.get(r).dateReserved.equals(date)) {
-        if (start.equals(compareStart)
-            || compareStart.isAfter(start) && compareStart.isBefore(end)
-            || compareEnd.isAfter(start) && compareEnd.isBefore(end)) {
+    if (reservations.size() == 0) {
+      for (JFXButton b : beds) {
+        b.setDisable(false);
+      }
+      for (JFXButton b : refRooms) {
+        b.setDisable(false);
+      }
+      for (JFXButton b : compRooms) {
+        b.setDisable(false);
+      }
+      for (JFXButton b : confRooms) {
+        b.setDisable(false);
+      }
+    } else {
+      for (int r = 0; r < reservations.size(); r++) {
+        LocalTime start = parse(reservations.get(r).timeReservedStart);
+        LocalTime end = parse(reservations.get(r).timeReservedEnd);
+        LocalTime compareStart = parse(timeStart);
+        LocalTime compareEnd = parse(timeEnd);
+        if (reservations.get(r).dateReserved.equals(date)) {
+          if (start.equals(compareStart)
+                  || compareStart.isAfter(start) && compareStart.isBefore(end)
+                  || compareEnd.isAfter(start) && compareEnd.isBefore(end)) {
+            for (JFXButton bed : beds) {
+              if (reservations.get(r).reservationType.equalsIgnoreCase(bed.getText())) {
+                bed.setDisable(true);
+                bed.setText("RESERVED!");
+              } else if (!bed.getText().equals("RESERVED!")) {
+                bed.setDisable(false);
+              }
+            }
+            for (JFXButton refRoom : refRooms) {
+              if (reservations.get(r).reservationType.equalsIgnoreCase(refRoom.getText())) {
+                refRoom.setDisable(true);
+                refRoom.setText("RESERVED!");
+              } else if (!refRoom.getText().equals("RESERVED!")) {
+                refRoom.setDisable(false);
+              }
+            }
+            for (JFXButton compRoom : compRooms) {
+              if (reservations.get(r).reservationType.equalsIgnoreCase(compRoom.getText())) {
+                compRoom.setDisable(true);
+                compRoom.setText("RESERVED!");
+              } else if (!compRoom.getText().equals("RESERVED!")) {
+                compRoom.setDisable(false);
+              }
+            }
+            for (JFXButton confRoom : confRooms) {
+              if (reservations.get(r).reservationType.equalsIgnoreCase(confRoom.getText())) {
+                confRoom.setDisable(true);
+                confRoom.setText("RESERVED!");
+              } else if (!confRoom.getText().equals("RESERVED!")) {
+                confRoom.setDisable(false);
+              }
+            }
+          }
+        } else {
           for (JFXButton bed : beds) {
-            if (reservations.get(r).reservationType.equalsIgnoreCase(bed.getText())) {
-              bed.setDisable(true);
-              bed.setText("RESERVED!");
-            }else if(!bed.getText().equals("RESERVED!")){
+            if (!bed.getText().equals("RESERVED!")) {
               bed.setDisable(false);
             }
           }
           for (JFXButton refRoom : refRooms) {
-            if (reservations.get(r).reservationType.equalsIgnoreCase(refRoom.getText())) {
-              refRoom.setDisable(true);
-              refRoom.setText("RESERVED!");
-            }else if(!refRoom.getText().equals("RESERVED!")){
+            if (!refRoom.getText().equals("RESERVED!")) {
               refRoom.setDisable(false);
             }
           }
-          for (JFXButton compRoom : compRooms) {
-            if (reservations.get(r).reservationType.equalsIgnoreCase(compRoom.getText())) {
-              compRoom.setDisable(true);
-              compRoom.setText("RESERVED!");
-            }else if(!compRoom.getText().equals("RESERVED!")){
-              compRoom.setDisable(false);
+          for (JFXButton comp : compRooms) {
+            if (!comp.getText().equals("RESERVED!")) {
+              comp.setDisable(false);
             }
           }
-          for (JFXButton confRoom : confRooms) {
-            if (reservations.get(r).reservationType.equalsIgnoreCase(confRoom.getText())) {
-              confRoom.setDisable(true);
-              confRoom.setText("RESERVED!");
-            } else if(!confRoom.getText().equals("RESERVED!")){
-              confRoom.setDisable(false);
+          for (JFXButton conf : confRooms) {
+            if (!conf.getText().equals("RESERVED!")) {
+              conf.setDisable(false);
             }
-          }
-        }
-      }else{
-        for (JFXButton bed : beds) {
-          if(!bed.getText().equals("RESERVED!")) {
-            bed.setDisable(false);
-          }
-        }
-        for (JFXButton refRoom : refRooms) {
-          if(!refRoom.getText().equals("RESERVED!")) {
-            refRoom.setDisable(false);
-          }
-        }
-        for (JFXButton comp : compRooms) {
-          if(!comp.getText().equals("RESERVED!")) {
-            comp.setDisable(false);
-          }
-        }
-        for (JFXButton conf : confRooms) {
-          if(!conf.getText().equals("RESERVED!")) {
-            conf.setDisable(false);
           }
         }
       }
