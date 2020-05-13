@@ -218,7 +218,7 @@ public class ReservationCalendarControllerEAPI {
               entry.setTitle(cal.getName() + ": " + entry.getTitle());
               entry.setCalendar(cal);
               reserves.add(new OnCallBedDataEAPI(entry.getId(),
-                      entry.getStartDate().toString(),
+                      this.cal.getDate().toString(),
                       entry.getStartTime().toString(),
                       entry.getEndTime().toString(),
                       entry.getLocation(),
@@ -228,7 +228,7 @@ public class ReservationCalendarControllerEAPI {
               database.addReservation(
                   connection,
                   entry.getId(),
-                  entry.getStartDate().toString(),
+                      this.cal.getDate().toString(),
                   entry.getStartTime().toString(),
                   entry.getEndTime().toString(),
                   entry.getLocation(),
